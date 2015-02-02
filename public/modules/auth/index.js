@@ -5,7 +5,7 @@ function run($window, $rootScope, $state, jwtHelper, signinModal, HAS_MODAL_LOGI
   $rootScope.global  = {};
   $rootScope.global.isModalOpen  = false;
   $rootScope.global.errors = [];
-  $window.onbeforeunload = function(e){
+  $window.onbeforeunload = function(e){alert('OH PIPPO');
     Auth.logout().then(function(response) {
       UserTokenStorage.del();
     })
@@ -50,7 +50,7 @@ function run($window, $rootScope, $state, jwtHelper, signinModal, HAS_MODAL_LOGI
   }
   $rootScope.global.isAuthenticated =  token;
  
-  $rootScope.global.logout = function() {
+ $rootScope.global.logout = function() {
     Auth.logout().then(function(response) {
       UserTokenStorage.del();
       delete $rootScope.global.isAuthenticated;

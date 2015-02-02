@@ -1,0 +1,16 @@
+/* Form required fields*/
+.form-group-chat{
+	@extend .form-group; 
+	margin-right:0 !important;
+}
+.chat-header{
+	color:$secondaryTextColor;
+}
+.chat-user{
+	@extend .text-left; 
+	color:$primaryTextColor;
+}
+.chat-message{
+	@extend .text-left; 
+	color:$primaryTextColor;
+}

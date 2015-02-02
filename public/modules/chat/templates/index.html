@@ -1,0 +1,44 @@
+<toaster-container toaster-options="{'position-class': 'toast-top-full-width'}"></toaster-container>
+<div class="container">
+	<div class="row clearfix">
+  		<div class="col-md-12 text-right">
+	  		<button class="btn btn-primary" type="button">
+		  		Users <span class="badge">{{chat.usersNum}}</span>
+			</button>
+	  		<button class="btn btn-primary" type="button">
+		  		Messages <span class="badge">{{chat.msgNum}}</span>
+			</button>	
+  		</div>
+  	</div>
+  	<div class="row">
+  		<div class="col-md-12"><hr /></div>
+  	</div>
+	<div class="row">
+  		<div class="col-md-3">
+  			<h3 class="text-left chat-header"><span class="fa fa-users"></span> Users</h3>
+			<ul class="list-unstyled">
+				<li  class="chat-user" data-ng-repeat="user in chat.users"><b>{{::user}}</b></li>
+			</ul>
+		</div>
+  		<div class="col-md-9">
+  			<h3 class="text-left chat-header"><span class="fa fa-comment"></span> Chat</h3>
+  			<ul class="list-unstyled">
+				<li  class="chat-message" data-ng-repeat="message in chat.messages">{{::message}}</b></li>
+			</ul>
+	  	</div>
+	</div>
+</div>
+<div class="footer navbar-fixed-bottom">
+	<div class="container">
+		<form name="form" class="form-chat" data-ng-submit="chat.send()" novalidate>
+			<div class="form-group-chat form-no-required">
+				<div class="input-group">
+					<span class="input-group-addon fa fa-pencil"></span>
+					<input type="text" tabindex="1" name="message" placeholder="Type your message" class="form-control input-lg"  autocomplete="off" required="required" data-ng-minlength="3" data-ng-maxlength="255" data-ng-model="chat.data.message" data-user-feedback />
+				</div>
+			</div>
+		</form>
+	</div>
+  </div>
+
+  

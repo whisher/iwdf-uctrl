@@ -59,7 +59,7 @@ app.use('/api', router);
 // Routes
 require(configs.serverPath+'/routers/auth')(app, auth, configs, passport);
 require(configs.serverPath+'/routers/users')(app, auth);
-require(configs.serverPath+'/routers/articles')(app, auth, jwt);
+
 
 
 
@@ -97,9 +97,8 @@ if (app.get('env') === 'development') {
 var server = http.createServer(app);
 var io = require('socket.io')(server);
 
-io.on('connection', function(socket){
-	console.log('a user connected');
-});
+io.on('connection', require(configs.serverPath+'/routers/chat')(io));
+
 server.listen(app.get('port'), function () {
 	console.log( 'Express started on http://localhost:' + 
 		app.get('port') + ' env: ' + app.get('env') +  '; press Ctrl-C to terminate.' );

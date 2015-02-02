@@ -1,12 +1,14 @@
-//  http://www.materialpalette.com/light-green/deep-orange
-$darkPrimaryColor:   #689F38 !default;
-$primaryColor:       #8BC34A !default;
-$lightPrimaryColor:  #DCEDC8 !default;
-$textPrimaryColor:   #212121 !default;
+//  http://www.materialpalette.com/light-blue/deep-orange
+$darkPrimaryColor:   #0288D1 !default;
+$primaryColor:       #03A9F4 !default;
+$lightPrimaryColor:  #B3E5FC !default;
+$textPrimaryColor:   #FFFFFF !default;
 $accentColor:        #FF5722 !default;
 $primaryTextColor:   #212121 !default;
 $secondaryTextColor: #727272 !default;
 $dividerColor:       #B6B6B6 !default;
+
+
 
 // bootstrap
 $body-bg:              #FAFAFA !default;
@@ -27,6 +29,8 @@ $jumbotron-bg: $lightPrimaryColor !default;
 
 $icon-font-path: "../fonts/" !default;
 $fa-font-path:   "../fonts" !default;  
+
+$font-family-sans-serif:  sans-serif, "Helvetica Neue", Helvetica, Arial !default;
 
 // animate.css
 $use-fadeIn: true;

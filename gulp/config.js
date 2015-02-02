@@ -25,7 +25,9 @@ var config = {
                 'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
                 'bower_components/angular-animate/angular-animate.js',
                 'bower_components/ngstorage/ngStorage.js',
-                'bower_components/angular-jwt/dist/angular-jwt.js'
+                'bower_components/angular-jwt/dist/angular-jwt.js',
+                'bower_components/angular-socket-io/socket.js',
+                'bower_components/angularjs-toaster/toaster.js'
             ],
             fonts: [
                 'bower_components/bootstrap-sass-official/assets/fonts/bootstrap/**',
