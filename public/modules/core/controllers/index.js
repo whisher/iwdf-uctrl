@@ -3,8 +3,7 @@
 
 function CoreController() {
   var core = this;
-  core.welcome = 'Welcome to Angular Expresso.';
-  core.prologue = 'A Simple and easy starting point for full stack javascript web development.';
+  core.welcome = 'Welcome to Chat Expresso.';
 }
 
 angular.module('core.controllers', [])

@@ -1,15 +1,15 @@
 {
   "author": "Fabio Bedini aka Whisher",
-  "name": "angular-expresso-chat",
+  "name": "angular-expresso-chat-rooms",
   "email": "io@ilwebdifabio.it",
   "url": "http://ilwebdifabio.it",
   "version": "1.0.0",
-  "homepage": "https://github.com/whisher/angular-expresso-chat",
+  "homepage": "https://github.com/whisher/angular-expresso-chat-rooms",
   "description": "just a run and up mean stack.",
-  "bugs": "https://github.com/whisher/angular-expresso-chat/issues",
+  "bugs": "https://github.com/whisher/angular-expresso-chat-rooms/issues",
   "repository": {
     "type": "git",
-    "url": "git@github.com:whisher/angular-expresso-chat.git"
+    "url": "git@github.com:whisher/angular-expresso-chat-rooms.git"
   },
   "scripts": {
     "postinstall": "bower cache clean && bower install"

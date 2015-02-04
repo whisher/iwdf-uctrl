@@ -5,12 +5,12 @@ function run($window, $rootScope, $state, jwtHelper, signinModal, HAS_MODAL_LOGI
   $rootScope.global  = {};
   $rootScope.global.isModalOpen  = false;
   $rootScope.global.errors = [];
-  $window.onbeforeunload = function(e){alert('OH PIPPO');
-    Auth.logout().then(function(response) {
+  $window.onbeforeunload = function(e){
+   /* Auth.logout().then(function(response) {
       UserTokenStorage.del();
     })
     .catch(function(response) {
-    });
+    });*/
   };
   $rootScope.$on('auth-unauthorized', function(event, data) { 
     UserTokenStorage.del();
