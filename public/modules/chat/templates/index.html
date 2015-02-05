@@ -47,11 +47,11 @@
 </div>
 <div class="footer navbar-fixed-bottom">
 	<div class="container">
-		<form name="form" class="form-chat" data-ng-submit="chat.send()" novalidate>
+		<form name="form" class="form-chat" data-ng-submit="chat.send(form)" novalidate>
 			<div class="form-group-chat form-no-required">
 				<div class="input-group">
 					<span class="input-group-addon fa fa-pencil"></span>
-					<input type="text" tabindex="1" name="message" placeholder="Type your message" class="form-control input-lg"  autocomplete="off" required="required" data-ng-minlength="3" data-ng-maxlength="255" data-ng-model="chat.data.message" data-user-feedback />
+					<input type="text" tabindex="1" name="message" placeholder="Type your message (at least two characters)" class="form-control input-lg"  autocomplete="off" data-ng-minlength="2" data-ng-maxlength="255" data-ng-model="chat.data.message" />
 				</div>
 			</div>
 		</form>

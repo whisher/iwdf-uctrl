@@ -4,8 +4,12 @@ var messages = {
 	join : 'has joined the chat',
 	leave: 'has left the chat'
 };
-function chatSocket(socketFactory) {
-  return socketFactory();
+function chatSocket(socketFactory, UserTokenStorage) {
+	var myIoSocket = io.connect('?token=' + UserTokenStorage.get());
+	var mySocket = socketFactory({
+    		ioSocket: myIoSocket
+  	});
+	return mySocket;
 }
 function chatData() {
 	var data = {

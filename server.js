@@ -11,6 +11,8 @@ var fs = require('fs'),
 	path = require('path'),
 	passport = require('passport'),
 	errorHandler = require('errorhandler'),
+	sio = require('socket.io'),
+	socketio_jwt = require('socketio-jwt'),
 	configs = require('./server/config/config'),
 	auth = require('./server/middlewares/auth'),
 	jwt = require('./server/middlewares/jwt')(configs);
@@ -95,7 +97,12 @@ if (app.get('env') === 'development') {
 	app.use(errorHandler());
 }
 var server = http.createServer(app);
-var io = require('socket.io')(server);
+var io = sio(server);
+
+io.use(socketio_jwt.authorize({
+  secret: configs.apiSecret,
+  handshake: true
+}));
 
 io.on('connection', require(configs.serverPath+'/routers/chat')(io));
 

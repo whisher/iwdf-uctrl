@@ -8,10 +8,11 @@ module.exports = function(io){
 	var rooms = ['room1','room2','room3'];
 	return function (socket) {
 		console.log('a user connected');
+		console.log('connected',socket.decoded_token);
 		io.emit('rooms', rooms);
 	 	socket.on('disconnect', function(){
 	 		console.log('leave user',socket.user);
-	 		socket.broadcast.to(socket.room).emit('toaster leave', socket.user.username );
+	 		socket.broadcast.to(socket.room).emit('toaster leave',{user:socket.user.username,room:socket.room});
 	 		delete users[socket.room][socket.user.id];
 	    		socket.broadcast.emit('update users', users);
 		});
@@ -23,11 +24,11 @@ module.exports = function(io){
    			if(!users[socket.room]){
    				users[socket.room] = {};	
    			}
-   			users[socket.room][socket.user.id] = socket.user;
-			io.emit('room', socket.room);
-			if( !(socket.user in users[socket.room]) ){
-				io.emit('toaster join', socket.user);	
+   			io.emit('room', socket.room);
+			if( Object.keys(users[socket.room]).indexOf(socket.user.id) === -1 ){
+				io.emit('toaster join', {user:socket.user,room:socket.room});	
 			}
+			users[socket.room][socket.user.id] = socket.user;
    			io.emit('update users', users);
   		});
   		socket.on('switch room', function(room){
@@ -39,16 +40,15 @@ module.exports = function(io){
     			if(!users[socket.room]){
    				users[socket.room] = {};	
    			}
-   			users[socket.room][socket.user.id] = socket.user;
    			io.emit('room', socket.room);
-			/*io.emit('room', socket.room);
-			if( !(user in users) ){
-				io.emit('toaster join', user);	
+			if( Object.keys(users[socket.room]).indexOf(socket.user.id) === -1 ){
+				io.emit('toaster join', {user:socket.user,room:socket.room});	
 			}
-   			io.emit('update users', users);*/
+			users[socket.room][socket.user.id] = socket.user;
+   			io.emit('update users', users);
   		});
 	  	socket.on('chat message', function(msg){
-	  		console.log('chat message', msg);
+	  		console.log('chat message', msg ,socket.room);
 	  		io.in(socket.room).emit('chat message',{ user: socket.user.username , msg: msg });
 	  	});
 	};

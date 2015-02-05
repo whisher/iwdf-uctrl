@@ -6,6 +6,7 @@ angular.module('chat', [
       	'templates',
       	'btford.socket-io',
       	'toaster',
+      	'auth.services',
 	'chat.services',
       	'chat.controllers',
      	'chat.routes'
