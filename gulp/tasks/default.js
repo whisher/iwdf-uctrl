@@ -7,10 +7,9 @@ module.exports = gulp.task('default', function() {
     if (release) { 
         runSequence(
                 'clean',
-                ['index', 'styles',  'fonts', 'templates', 'hint'],
-                'vendor','scripts',
-                ['serve']
-                );
+                ['index', 'styles', 'fonts', 'assets', 'templates'],
+                'vendor','scripts'
+               );
     } else {
         runSequence(
                 'clean',

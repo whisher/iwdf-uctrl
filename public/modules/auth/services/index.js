@@ -9,6 +9,9 @@ function Auth($http) {
     isLoggedIn: function() {
         return $http.get('/auth/isloggedin');
     },
+    hasValidToken: function() {
+        return $http.get('/auth/hasvalidtoken');
+    },
     signin: function(data) {
         return $http.post('/auth/signin', data);
     },
@@ -17,9 +20,6 @@ function Auth($http) {
     },
     logout: function() {
         return $http.get('/auth/logout');
-    },
-    forgot: function(data) {
-        return $http.post('/auth/forgot', data);
     }
   };
 }
@@ -77,7 +77,6 @@ function HttpInterceptor($rootScope, $q, UserTokenStorage) {
             }
             if (rejection.status === 403) {
                 $rootScope.$emit('auth-forbidden', rejection);
-                console.log('OOOOPPPPPPPSSSSS');
             }
             return $q.reject(rejection);
         }

@@ -19,6 +19,13 @@ exports.isjustlogged = function(req, res) {
 };
 
 /**
+ * just logged route
+ */
+exports.hasValidToken = function(req, res) {
+  return res.sendStatus(200);
+};
+
+/**
  * Try to signin  an user
  */
 exports.signin = function(configs, passport) {
@@ -28,9 +35,6 @@ exports.signin = function(configs, passport) {
     var errors = req.validationErrors();
     if (errors) {
       return res.status(400).json(errors);
-    }
-    if (req.body.remember) {
-          	 req.session.cookie.maxAge = 1000 * 60 * 60 * 24 * 7;
     }
     passport.authenticate('local', function(err, user, info) {
       if (err) {

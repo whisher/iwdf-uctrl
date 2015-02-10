@@ -5,13 +5,15 @@ function run($window, $rootScope, $state, jwtHelper, signinModal, HAS_MODAL_LOGI
   $rootScope.global  = {};
   $rootScope.global.isModalOpen  = false;
   $rootScope.global.errors = [];
+
   $window.onbeforeunload = function(e){
-   /* Auth.logout().then(function(response) {
+    Auth.logout().then(function(response) {
       UserTokenStorage.del();
     })
     .catch(function(response) {
-    });*/
+    });
   };
+  
   $rootScope.$on('auth-unauthorized', function(event, data) { 
     UserTokenStorage.del();
     if(HAS_MODAL_LOGIN){
@@ -32,7 +34,7 @@ function run($window, $rootScope, $state, jwtHelper, signinModal, HAS_MODAL_LOGI
   $rootScope.global.current = {};
   $rootScope.global.current.signin = true;
   $rootScope.global.current.register = false;
-  $rootScope.global.current.forgot = false;
+  
   $rootScope.global.show = function (current) {
     if(!$rootScope.global.isModalOpen){
        $rootScope.global.isModalOpen  = true;
@@ -44,6 +46,7 @@ function run($window, $rootScope, $state, jwtHelper, signinModal, HAS_MODAL_LOGI
     $rootScope.global.current[current]  = true;
     $rootScope.global.errors.length = 0;
   };
+
   var token = UserTokenStorage.get();
   if(token){
     token = jwtHelper.decodeToken(token);
@@ -71,6 +74,7 @@ function run($window, $rootScope, $state, jwtHelper, signinModal, HAS_MODAL_LOGI
     }
     return  $rootScope.global.isAuthenticated.id === authorId;
   }; 
+
   $rootScope.global.signin = function() {
     if(HAS_MODAL_LOGIN){
       $rootScope.global.show('signin');
@@ -78,6 +82,7 @@ function run($window, $rootScope, $state, jwtHelper, signinModal, HAS_MODAL_LOGI
     }
     $state.go('session.signin');  
   }; 
+
   $rootScope.global.register = function() {
     if(HAS_MODAL_LOGIN){
       $rootScope.global.show('register');
@@ -85,6 +90,7 @@ function run($window, $rootScope, $state, jwtHelper, signinModal, HAS_MODAL_LOGI
     }
     $state.go('session.register');  
   }; 
+
 }
 
 angular.module('auth',[

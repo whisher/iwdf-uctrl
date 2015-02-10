@@ -1,4 +1,10 @@
 /* Form required fields*/
+#toast-container {
+  z-index: 9999999 !important;
+}
+.toast-success {
+  background-color:$accentColor !important;
+}
 .form-group-chat{
 	@extend .form-group; 
 	margin-right:0 !important;

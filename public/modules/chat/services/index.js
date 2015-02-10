@@ -5,11 +5,11 @@ var messages = {
 	leave: 'has left the chat'
 };
 function chatSocket(socketFactory, UserTokenStorage) {
-	var myIoSocket = io.connect('?token=' + UserTokenStorage.get());
-	var mySocket = socketFactory({
-    		ioSocket: myIoSocket
+	var ioSocket = io.connect('?token=' + UserTokenStorage.get());
+	var socket = socketFactory({
+    		ioSocket: ioSocket
   	});
-	return mySocket;
+	return socket;
 }
 function chatData() {
 	var data = {
@@ -41,13 +41,13 @@ function chatData() {
     			if(!data.messages[room]){
     				data.messages[room] = [];
     			}
-      			return data.messages[room];
+      		return data.messages[room];
     		},
-    		setMessages: function(room,msg) {
+    		addMessage: function(room,msg) {
     			if(!data.messages[room]){
     				data.messages[room] = [];
     			}
-      			data.messages[room].unshift(msg);
+      		return data.messages[room].unshift(msg);
     		},
     	};
 }

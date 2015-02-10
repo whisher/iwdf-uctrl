@@ -59,7 +59,7 @@ router.use(function(req, res, next) {
 app.use('/api', router);
 */
 // Routes
-require(configs.serverPath+'/routers/auth')(app, auth, configs, passport);
+require(configs.serverPath+'/routers/auth')(app, auth, configs, jwt, passport);
 require(configs.serverPath+'/routers/users')(app, auth);
 
 

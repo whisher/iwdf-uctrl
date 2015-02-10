@@ -40,7 +40,7 @@
   		<div class="col-md-9">
   			<h3 class="text-left chat-header"><span class="fa fa-comment"></span> Chat</h3>
   			<ul class="list-unstyled">
-				<li  class="chat-message" data-ng-repeat="message in chat.messages track by $index"><b>{{message.user}}</b>: {{message.msg}}</li>
+				<li  class="chat-message" data-ng-repeat="message in chat.messages track by $index"><b>{{message.user.username}}</b>: {{message.msg}}</li>
 			</ul>
 	  	</div>
 	</div>

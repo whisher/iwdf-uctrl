@@ -6,7 +6,12 @@ function config($stateProvider) {
         		.state('chat', {
             		url: '/chat',
             		templateUrl: 'chat/templates/index.html',
-            		controller:'ChatController as chat'
+            		controller:'ChatController as chat',
+            		resolve: {
+	                    		hasvalidtoken: function(Auth){
+	                        		return Auth.hasValidToken();
+	                    		} 
+	                	}
     		});
         		
 }
