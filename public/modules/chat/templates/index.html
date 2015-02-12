@@ -1,14 +1,14 @@
-<toaster-container toaster-options="{'position-class': 'toast-top-full-width'}"></toaster-container>
-	<div class="container">
+<div class="container">
+	<toaster-container toaster-options="{'position-class': 'toast-top-full-width'}"></toaster-container>
 	<div class="row">
-  		<div class="col-md-6">
+  		<div class="col-xs-12 col-md-6">
   			<ul class="rooms">
 				<li data-ng-repeat="room in chat.rooms">
 					<button class="btn btn-default" type="submit" data-ng-class="{active: chat.room===room}" data-ng-click="chat.switchRoom(room)">{{room}}</button>
 				</li>
 			</ul>	
   		</div>
-  		<div class="col-md-6 clearfix">
+  		<div class="col-md-6 hide-mobile">
   			<ul class="chat-status">
   				<li>
 					<span class="fa fa-plug"></span> Room: <b class="text-info">{{chat.room}}</b>
@@ -27,17 +27,15 @@
   		</div>
 	</div>
 	
-  	<div class="row">
-  		<div class="col-md-12"><hr /></div>
-  	</div>
+  	<div class="row"><div class="col-md-12"><hr /></div></div>
 	<div class="row">
-  		<div class="col-md-3">
+  		<div class="col-md-3 hide-mobile">
   			<h3 class="text-left chat-header"><span class="fa fa-users"></span> Users</h3>
 			<ul class="list-unstyled">
 				<li  class="chat-user" data-ng-repeat="user in chat.users"><b>{{user}}</b></li>
 			</ul>
 		</div>
-  		<div class="col-md-9">
+  		<div class="col-xs-12 col-md-9">
   			<h3 class="text-left chat-header"><span class="fa fa-comment"></span> Chat</h3>
   			<ul class="list-unstyled">
 				<li  class="chat-message" data-ng-repeat="message in chat.messages track by $index"><b>{{message.user.username}}</b>: {{message.msg}}</li>

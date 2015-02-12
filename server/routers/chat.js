@@ -9,6 +9,7 @@ module.exports = function(io){
 		socket.user = socket.decoded_token;
 		socket.on('disconnect', function(){
 	 		console.log('leave user',socket.user);
+	 		socket.leave(socket.room);
 	 		socket.broadcast.to(socket.room).emit('toaster leave',{user:socket.user,room:socket.room});
 	 		delete users[socket.room][socket.user.id];
 	 		delete socket.user;
