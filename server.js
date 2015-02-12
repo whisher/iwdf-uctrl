@@ -11,8 +11,8 @@ var fs = require('fs'),
 	path = require('path'),
 	passport = require('passport'),
 	errorHandler = require('errorhandler'),
-	sio = require('socket.io'),
-	socketio_jwt = require('socketio-jwt'),
+	/*sio = require('socket.io'),*/
+	/*socketio_jwt = require('socketio-jwt'),*/
 	configs = require('./server/config/config'),
 	auth = require('./server/middlewares/auth'),
 	jwt = require('./server/middlewares/jwt')(configs);
@@ -97,17 +97,17 @@ if (app.get('env') === 'development') {
 	app.use(errorHandler());
 }
 var server = http.createServer(app);
-var io = sio(server);
+//var io = sio(server);
 
-io.use(socketio_jwt.authorize({
+/*io.use(socketio_jwt.authorize({
   secret: configs.apiSecret,
   handshake: true
-}));
+}));*/
 
-io.on('connection', require(configs.serverPath+'/routers/chat')(io));
+//io.on('connection', require(configs.serverPath+'/routers/chat')(io));
 
 server.listen(app.get('port'), function () {
-	console.log( 'Express started on http://localhost:' + 
+	console.log( 'Express started on http://'  + configs.hostname + ':' +
 		app.get('port') + ' env: ' + app.get('env') +  '; press Ctrl-C to terminate.' );
 });
 

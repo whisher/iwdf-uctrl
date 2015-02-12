@@ -1,15 +1,15 @@
 {
   "author": "Fabio Bedini aka Whisher",
-  "name": "angular-expresso-chat-rooms",
+  "name": "iwdf-uctrl",
   "email": "io@ilwebdifabio.it",
   "url": "http://ilwebdifabio.it",
   "version": "1.0.0",
-  "homepage": "https://github.com/whisher/angular-expresso-chat-rooms",
+  "homepage": "https://github.com/whisher/iwdf-uctrl",
   "description": "just a run and up mean stack.",
-  "bugs": "https://github.com/whisher/angular-expresso-chat-rooms/issues",
+  "bugs": "https://github.com/whisher/iwdf-uctrl/issues",
   "repository": {
     "type": "git",
-    "url": "git@github.com:whisher/angular-expresso-chat-rooms.git"
+    "url": "git@github.com:whisher/iwdf-uctrl.git"
   },
   "scripts": {
     "postinstall": "bower cache clean && bower install"
@@ -39,16 +39,11 @@
     "morgan": "^1.5.0",
     "passport": "^0.2.1",
     "passport-local": "^1.0.0",
-    "serve-favicon": "^2.2.0",
-    "socket.io": "^1.2.1",
-    "socketio-jwt": "^2.3.5"
+    "serve-favicon": "^2.2.0"
   },
   "devDependencies": {
     "bower": "^1.3.12",
-    "browser-sync": "^1.6.5",
-    "cordova": "^4.1.2",
     "del": "^0.1.3",
-    "express": "^4.10.2",
     "gulp": "^3.8.10",
     "gulp-angular-templatecache": "^1.4.2",
     "gulp-autoprefixer": "^1.0.1",
