@@ -17,7 +17,11 @@ var config = {
             styles: SRC_FOLDER + '/styles/*.scss',
             scripts: [
                 TMP_FOLDER + '/templates/templates.js',
-                SRC_FOLDER + '/modules/**/*.js'
+                SRC_FOLDER + '/modules/**/*.js',
+                '!'+SRC_FOLDER + '/modules/gmgrid/**'
+            ],
+            gmgrid:[
+                SRC_FOLDER + '/modules/gmgrid/**'
             ],
             vendor:[
                 'bower_components/jquery/dist/jquery.min.js',
@@ -58,14 +62,15 @@ var config = {
                 scripts: BUILD_FOLDER + '/scripts',
                 fonts: BUILD_FOLDER + '/fonts',
                 images: BUILD_FOLDER + '/images',
-                
+                gmgrid:BUILD_FOLDER + '/modules/gmgrid'
             },
             dist: {
                 index: RELEASE_FOLDER,
                 styles: RELEASE_FOLDER + '/styles',
                 scripts: RELEASE_FOLDER + '/scripts',
                 fonts: RELEASE_FOLDER + '/fonts',
-                images: RELEASE_FOLDER + '/images'
+                images: RELEASE_FOLDER + '/images',
+                gmgrid:BUILD_FOLDER + '/modules/gmgrid'
             }
         }
     },

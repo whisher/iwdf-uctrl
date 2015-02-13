@@ -7,11 +7,11 @@ function run($window, $rootScope, $state, jwtHelper, signinModal, HAS_MODAL_LOGI
   $rootScope.global.errors = [];
 
   $window.onbeforeunload = function(e){
-    Auth.logout().then(function(response) {
+    /*Auth.logout().then(function(response) {
       UserTokenStorage.del();
     })
     .catch(function(response) {
-    });
+    });*/
   };
   
   $rootScope.$on('auth-unauthorized', function(event, data) { 

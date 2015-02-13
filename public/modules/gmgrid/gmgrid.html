@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
+    <title>Griglia Google Maps</title>
+    <style>
+        html, body {
+            padding: 0px;
+            margin: 0px;
+            height: 100%;
+
+        }
+
+        #mapDiv {
+            transition: transform 0.5s;
+        }
+
+        #mapDiv.perspectiveEnabled {
+            perspective: 500px;
+            transform-style: preserve-3d;
+
+        }
+
+        #mapDiv.perspectiveEnabled > div.gm-style {
+
+            transition: transform 0.75s;
+            transform-style: preserve-3d;
+        }
+
+        #mapDiv.perspectiveEnabled > div.gm-style div {
+            transition: all 0.5s;
+        }
+
+        /* #mapDiv.perspectiveEnabled > div.gm-style.rotated {
+             *//*transform: rotateX(30deg);*//*
+             transform: rotateX(60deg) rotateZ(-15deg);
+         }*/
+
+        #mapDiv.perspectiveEnabled .cubeWrapper {
+
+            transform-style: preserve-3d;
+            transform: none;
+        }
+
+        #mapDiv .cubeWrapper {
+            transition: transform 0.75s;
+            position: absolute;
+            /*  perspective: 800px;
+              perspective-origin: 50% 100px;*/
+        }
+
+        .cube {
+            position: relative;
+            width: 100px;
+            transform-style: preserve-3d;
+            /*transition: all 0.5s;*/
+        }
+
+        .cube div {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-color: #2C70AF;
+            border: 1px solid white;
+        }
+
+        .cube .bottom {
+            transition: opacity 0.5s;
+        }
+
+        .cube .back {
+        }
+
+        .cube .bottom:hover, .cube:hover .bottom {
+            opacity: 0;
+        }
+
+        .cube .bottom_second_level {
+            background-color: #ffffff;
+            background-image: url("./Images/vt_eyes.png");
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+        #setLatLong {
+            padding: 5px;
+        }
+
+        /* .backContainer{
+             z-index:999;
+             margin:15px;
+             position:absolute;
+             top:0;
+             left:0;
+         }*/
+
+        .earthLayer {
+            position: absolute;
+            z-index: 3;
+            top: 0;
+            left: 0;
+
+            background-color: #000;
+            background-image: url("Images/stars.jpg");
+            background-repeat: no-repeat;
+            background-size: auto;
+        }
+
+        .gridLayer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 2;
+        }
+
+        #loadingDiv {
+            margin: auto;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            width: 80px;
+            height: 80px;
+        }
+        
+        .cesium-credit-textContainer
+        {
+            display: none !important;
+
+        }
+
+        /*$('#mapDiv').css('background-color', 'rgb(213, 237, 255)');*/
+
+        #mapDiv
+        {
+            background-color:rgb(213, 237, 255) !important;
+            background-image: url("./Images/worldtwoo_t_overlay.png") !important;
+            background-repeat: repeat !important;
+            background-size: auto !important;
+            background-position: center;
+        }
+    </style>
+
+</head>
+<body>
+<!--
+<div id="setLatLong">
+    <label for="newLat">Latitude:&nbsp;</label><input type="text" id="newLat" value="0.0">&nbsp;
+    <label for="newLong">Longitude:&nbsp;</label><input type="text" id="newLong" value="0.0">&nbsp;
+    <button id="setLatLongBtn">Set Lat &amp; Long</button>
+    <script>
+
+    </script>
+    &nbsp;
+    <button id="setPerspectiveViewBtn">Set perspective view</button>
+    &nbsp;
+    <button id="disablePerspectiveViewBtn">Disable perspective view</button>
+
+</div>
+-->
+<div id="viewContainer" style="position:relative; width:100%; height:95%">
+    <div class="earthLayer" style="width:100%; height:100%">
+        <div id="earth_div" style="width:100%; height:100%"></div>
+       <img src='./Images/worldtwoo.png' style="height:40px; position:absolute;bottom:0px;left:0px"/>
+    </div>
+    <div class="gridLayer" style="width:100%; height:100%">
+        <!-- <div class="backContainer"><button class="btn btn-primary">Back</button></div>-->
+        <div id="mapDiv" style="width:100%; height:100%"></div>
+        <div id="loadingDiv" style="display: none;">
+                <script type="text/javascript" src="//rh.revolvermaps.com/0/0/3.js?i=7v1e12rj4be&amp;b=0&amp;s=40&amp;m=0&amp;cl=2c70af&amp;co=ffffff&amp;cd=ff0000&amp;v0=100&amp;v1=100&amp;r=0" async="async"></script>
+
+        </div>
+        <div id="boxId"></div>
+    </div>
+</div>
+
+
+<script src="Scripts/jquery-1.11.2.min.js"></script>
+<script src="http://maps.googleapis.com/maps/api/js?v=3&sensor=false"></script>
+<script src="http://www.webglearth.com/v2/api.js"></script>
+<script src="Scripts/GMgrid.js"></script>
+<script src="Scripts/c11_3DGridView.js"></script>
+<script src="Scripts/glearth.js"></script>
+<script src="Scripts/main.js"></script>
+<script>
+
+</script>
+</body>
+</html>

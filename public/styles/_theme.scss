@@ -1,15 +1,79 @@
-body {
-  color: #222;
-  text-align: center;
+html, body {
+  height:100%;
+      margin:0;
+      padding:0;
 }
+ul,li{
+  margin:0;
+      padding:0;
+      border:0;
+}
+#frame-container {
+    background-color: #455A64;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    border:50px solid #9E9E9E;
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    box-sizing:border-box;
+}
+#container {
+    background-color: #111;
+    height: 100%;
+    width: 100%;
+}
+#bar-top,#bar-right,#bar-bottom,#bar-left{
+    position:absolute;    
+}
+#bar-top,#bar-bottom{left:-50px;right:-50px;height:50px;background-color:#607D8B}
+#bar-top{top:-50px}
+#bar-bottom{bottom:-50px}
+#bar-left,#bar-right{top:0px;bottom:0px;width:50px;background-color:#CFD8DC;}
+#bar-left{left:-50px}
+#bar-right{right:-50px;z-index: 9999;}
+
+ul.list-unstyled {
+  padding-left: 0;
+  list-style: none;
+}
+li.btn-action{
+    
+}
+li.btn-action a,li.btn-action a:hover,li.btn-action a:focus {
+    display: block;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    background-color:#727272; 
+    color: #fff;
+    font-size: 24px;
+    text-align: center;
+    cursor:pointer;
+}
+
+li.list-horizontal{
+    display: inline-block;
+    margin-right: 2px;
+}
+li.list-vertical{
+    margin-bottom: 2px;
+}
+ul.list-horizontal-right{
+    position: absolute;
+    right: 0;
+}
+
 .logo{
   @extend .fa; 
   @extend .fa-bolt; 
   color: #FF5722;
 }
-.welcome {
-  @extend .jumbotron; 
+#welcome {
+    background-color:red;
   h1,h2,h3{
+      margin:0;
+      padding:0;
   	color:$secondaryTextColor;
   }
 }
@@ -17,9 +81,11 @@ body {
 [ng-cloak].overlay {
   display: block !important;
   bottom: 0;
-  background-color: $primaryTextColor;
+  height: 100%;
+  width: 100%;
+  background-color: red;
   left: 0;
-  position: fixed;
+  position: absolute;
   right: 0;
   top: 0;
   z-index:9999;
@@ -36,6 +102,7 @@ body {
     font-size: 4em;
     position: absolute;
     top: 50%;
+    left: 50%;
   }
 }
 
@@ -64,4 +131,7 @@ body {
     width: 80%;
     height: 80%;
     margin-left: -10%;
+}
+.ng-pageslide {
+  background: #eee;
 }

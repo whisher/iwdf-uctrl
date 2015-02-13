@@ -8,13 +8,13 @@ module.exports = gulp.task('default', function() {
         runSequence(
                 'clean',
                 ['index', 'styles', 'fonts', 'assets', 'templates'],
-                'vendor','scripts'
+                ['vendor','scripts','gmgrid']
                );
     } else {
         runSequence(
                 'clean',
                 ['index', 'styles', 'fonts', 'assets', 'templates', 'hint'],
-                ['vendor','scripts'],
+                ['vendor','scripts','gmgrid'],
                 'watch'
        );
     }

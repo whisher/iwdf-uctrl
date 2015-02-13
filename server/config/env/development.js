@@ -1,7 +1,9 @@
 'use strict';
-
+var db = process.env.MONGOLAB_URI ||
+		process.env.MONGOHQ_URL ||
+		'mongodb://localhost/angular-expresso-chat-dev';
 module.exports = {
-  db: 'mongodb://' + (process.env.DB_PORT_27017_TCP_ADDR || 'localhost') + '/angular-expresso-chat-dev',
+  db: db,
   debug: true,
    mongoose: {
     debug: false

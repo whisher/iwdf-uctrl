@@ -2,7 +2,7 @@
   'use strict';
 
 // If false signin / register in view otherwise in modal
-var HAS_MODAL_LOGIN = false;
+var HAS_MODAL_LOGIN = true;
 
 function Auth($http) {
   return {
