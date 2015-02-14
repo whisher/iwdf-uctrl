@@ -124,7 +124,7 @@ function pageslide($rootScope, $templateCache){
                 /* Closed */
                 function psClose(slider,param){
                     if (slider.style.width !== 0 ){
-                      //content.style.display = 'none';
+                      content.style.display = 'none';
                         switch (param.side){
                             case 'right':
                                 slider.style.width = '0px'; 

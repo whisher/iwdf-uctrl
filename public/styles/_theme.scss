@@ -19,19 +19,19 @@ ul,li{
     box-sizing:border-box;
 }
 #container {
-    background-color: #111;
+    background-color: #eee;
     height: 100%;
     width: 100%;
 }
 #bar-top,#bar-right,#bar-bottom,#bar-left{
     position:absolute;    
 }
-#bar-top,#bar-bottom{left:-50px;right:-50px;height:50px;background-color:#607D8B}
+#bar-top,#bar-bottom{left:-50px;right:-50px;height:50px;background-color:#2C70AF}
 #bar-top{top:-50px}
 #bar-bottom{bottom:-50px}
-#bar-left,#bar-right{top:0px;bottom:0px;width:50px;background-color:#CFD8DC;}
+#bar-left,#bar-right{top:0px;bottom:0px;width:50px;background-color:#fff;}
 #bar-left{left:-50px}
-#bar-right{right:-50px;z-index: 9999;}
+#bar-right{right:-50px;z-index: 1500;}
 
 ul.list-unstyled {
   padding-left: 0;
@@ -69,21 +69,14 @@ ul.list-horizontal-right{
   @extend .fa-bolt; 
   color: #FF5722;
 }
-#welcome {
-    background-color:red;
-  h1,h2,h3{
-      margin:0;
-      padding:0;
-  	color:$secondaryTextColor;
-  }
-}
+
 [ng-cloak] {display: none;}
 [ng-cloak].overlay {
   display: block !important;
   bottom: 0;
   height: 100%;
   width: 100%;
-  background-color: red;
+  background-color: #2C70AF;
   left: 0;
   position: absolute;
   right: 0;
@@ -98,7 +91,7 @@ ul.list-horizontal-right{
     @extend .fa; 
     @extend .fa-circle-o-notch; 
     @extend .fa-spin; 
-    color:$lightPrimaryColor;
+    color:#fff;
     font-size: 4em;
     position: absolute;
     top: 50%;
@@ -118,10 +111,12 @@ ul.list-horizontal-right{
   position:absolute !important;
   top:0;
   left:0;
+  right:0;
   width:100%;
   height:100%;
-  background-color:#000000 !important;
-  opacity: 0.5 !important;
+  background-color:#111111 !important;
+  opacity: 0.8 !important;
+  z-index:9999;
 }
 .modal-center{
     position: fixed;
@@ -133,5 +128,15 @@ ul.list-horizontal-right{
     margin-left: -10%;
 }
 .ng-pageslide {
+  background: #ddd;
+}
+.page {
+   height: 100%;
+  width: 100%;
   background: #eee;
+  h1{
+    padding:0;
+    margin:0;
+    text-align:center !important;
+  }
 }
