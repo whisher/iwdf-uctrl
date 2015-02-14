@@ -39,7 +39,7 @@ require(configs.serverPath+'/config/express')(configs,app,passport,db);
 	app.use(require('connect-livereload')());
 }
 app.set('port', process.env.PORT || 3000);
-app.use(favicon(path.join(__dirname,configs.releasePath,'favicon.ico')));
+//app.use(favicon(path.join(__dirname,configs.releasePath,'favicon.ico')));
 app.use(express.static( path.join(configs.rootPath, configs.releasePath)));
 
 /*
