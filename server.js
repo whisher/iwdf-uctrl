@@ -40,8 +40,9 @@ require(configs.serverPath+'/config/express')(configs,app,passport,db);
 }
 app.set('port', process.env.PORT || 3000);
 
-app.use(favicon(path.join(configs.rootPath,configs.releasePath,'favicon.ico')));
+app.use(favicon(path.join(configs.rootPath,configs.releasePath,'favicon.png')));
 app.use(express.static( path.join(configs.rootPath, configs.releasePath)));
+app.use('/screenshots',express.static(path.join(configs.rootPath, 'screenshots')));
 
 /*
 var router = express.Router();
@@ -61,8 +62,6 @@ app.use('/api', router);
 // Routes
 require(configs.serverPath+'/routers/auth')(app, auth, configs, jwt, passport);
 require(configs.serverPath+'/routers/users')(app, auth);
-
-
 
 
 

@@ -16,7 +16,7 @@ function run($log) {
     $log.debug('App is running!');
 }
 
-angular.module('app', ['ngAnimate','core','auth','users'])
+angular.module('app', ['ngAnimate','anim-in-out','core','auth','users'])
 	    .config(config)
 	    .run(run);
  })();

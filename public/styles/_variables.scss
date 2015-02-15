@@ -1,13 +1,14 @@
 //  http://www.materialpalette.com/light-blue/deep-orange
+$brand-base: #2C70AF !default;
 $darkPrimaryColor:   #0288D1 !default;
 $primaryColor:       #03A9F4 !default;
-$lightPrimaryColor:  #B3E5FC !default;
+$lightPrimaryColor:  lighten($brand-base, 46.7%) !default;
 $textPrimaryColor:   #FFFFFF !default;
 $accentColor:        #FF5722 !default;
 $primaryTextColor:   #212121 !default;
 $secondaryTextColor: #727272 !default;
 $dividerColor:       #B6B6B6 !default;
-
+//
 
 
 // bootstrap
@@ -35,7 +36,10 @@ $font-family-sans-serif:  sans-serif, "Helvetica Neue", Helvetica, Arial !defaul
 // animate.css
 $use-fadeIn: true;
 $use-fadeOut: true;
-
+$use-fadeInLeft: true;
+$use-fadeOutLeft: true;
+$use-bounceOut: true;
+$use-bounceIn: true;
 // animate app
 $view-animation : true;
 $repeat-animation-errors : true;

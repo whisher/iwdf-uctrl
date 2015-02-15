@@ -1,4 +1,146 @@
 @charset "UTF-8";
+@-webkit-keyframes bounceIn {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    -webkit-transform: scale(1.05);
+  }
+  70% {
+    -webkit-transform: scale(0.9);
+  }
+  100% {
+    -webkit-transform: scale(1);
+  }
+}
+@-moz-keyframes bounceIn {
+  0% {
+    opacity: 0;
+    -moz-transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    -moz-transform: scale(1.05);
+  }
+  70% {
+    -moz-transform: scale(0.9);
+  }
+  100% {
+    -moz-transform: scale(1);
+  }
+}
+@-o-keyframes bounceIn {
+  0% {
+    opacity: 0;
+    -o-transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    -o-transform: scale(1.05);
+  }
+  70% {
+    -o-transform: scale(0.9);
+  }
+  100% {
+    -o-transform: scale(1);
+  }
+}
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.bounceIn {
+  -webkit-animation-name: bounceIn;
+  -moz-animation-name: bounceIn;
+  -o-animation-name: bounceIn;
+  animation-name: bounceIn;
+}
+
+@-webkit-keyframes bounceOut {
+  0% {
+    -webkit-transform: scale(1);
+  }
+  25% {
+    -webkit-transform: scale(0.95);
+  }
+  50% {
+    opacity: 1;
+    -webkit-transform: scale(1.1);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: scale(0.3);
+  }
+}
+@-moz-keyframes bounceOut {
+  0% {
+    -moz-transform: scale(1);
+  }
+  25% {
+    -moz-transform: scale(0.95);
+  }
+  50% {
+    opacity: 1;
+    -moz-transform: scale(1.1);
+  }
+  100% {
+    opacity: 0;
+    -moz-transform: scale(0.3);
+  }
+}
+@-o-keyframes bounceOut {
+  0% {
+    -o-transform: scale(1);
+  }
+  25% {
+    -o-transform: scale(0.95);
+  }
+  50% {
+    opacity: 1;
+    -o-transform: scale(1.1);
+  }
+  100% {
+    opacity: 0;
+    -o-transform: scale(0.3);
+  }
+}
+@keyframes bounceOut {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+}
+.bounceOut {
+  -webkit-animation-name: bounceOut;
+  -moz-animation-name: bounceOut;
+  -o-animation-name: bounceOut;
+  animation-name: bounceOut;
+}
+
 @-webkit-keyframes fadeIn {
   0% {
     opacity: 0;
@@ -36,6 +178,53 @@
   -moz-animation-name: fadeIn;
   -o-animation-name: fadeIn;
   animation-name: fadeIn;
+}
+
+@-webkit-keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+  }
+}
+@-moz-keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    -moz-transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    -moz-transform: translateX(0);
+  }
+}
+@-o-keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    -o-transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    -o-transform: translateX(0);
+  }
+}
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.fadeInLeft {
+  -webkit-animation-name: fadeInLeft;
+  -moz-animation-name: fadeInLeft;
+  -o-animation-name: fadeInLeft;
+  animation-name: fadeInLeft;
 }
 
 @-webkit-keyframes fadeOut {
@@ -77,6 +266,53 @@
   animation-name: fadeOut;
 }
 
+@-webkit-keyframes fadeOutLeft {
+  0% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateX(-20px);
+  }
+}
+@-moz-keyframes fadeOutLeft {
+  0% {
+    opacity: 1;
+    -moz-transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    -moz-transform: translateX(-20px);
+  }
+}
+@-o-keyframes fadeOutLeft {
+  0% {
+    opacity: 1;
+    -o-transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    -o-transform: translateX(-20px);
+  }
+}
+@keyframes fadeOutLeft {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+}
+.fadeOutLeft {
+  -webkit-animation-name: fadeOutLeft;
+  -moz-animation-name: fadeOutLeft;
+  -o-animation-name: fadeOutLeft;
+  animation-name: fadeOutLeft;
+}
+
 /*!
  *  Font Awesome 4.1.0 by @davegandy - http://fontawesome.io - @fontawesome
  *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
@@ -90,7 +326,7 @@
   font-weight: normal;
   font-style: normal;
 }
-.fa, .logo, [ng-cloak].overlay:before {
+.fa, [ng-cloak].overlay:before {
   display: inline-block;
   font-family: FontAwesome;
   font-style: normal;
@@ -162,10 +398,10 @@
   float: left;
 }
 
-.fa.pull-left, .pull-left.logo, .pull-left[ng-cloak].overlay:before {
+.fa.pull-left, .pull-left[ng-cloak].overlay:before {
   margin-right: .3em;
 }
-.fa.pull-right, .pull-right.logo, .pull-right[ng-cloak].overlay:before {
+.fa.pull-right, .pull-right[ng-cloak].overlay:before {
   margin-left: .3em;
 }
 
@@ -1128,8 +1364,7 @@
 }
 
 .fa-flash:before,
-.fa-bolt:before,
-.logo:before {
+.fa-bolt:before {
   content: "";
 }
 
@@ -6999,11 +7234,11 @@ tbody.collapse.in {
   color: #fff;
 }
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-  color: #B3E5FC;
+  color: #d5e5f4;
   background-color: transparent;
 }
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
-  color: #B3E5FC;
+  color: #d5e5f4;
   background-color: #0273b0;
 }
 .navbar-default .navbar-nav > .disabled > a, .navbar-default .navbar-nav > .disabled > a:hover, .navbar-default .navbar-nav > .disabled > a:focus {
@@ -7025,18 +7260,18 @@ tbody.collapse.in {
 }
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
   background-color: #0273b0;
-  color: #B3E5FC;
+  color: #d5e5f4;
 }
 @media (max-width: 767px) {
   .navbar-default .navbar-nav .open .dropdown-menu > li > a {
     color: #fff;
   }
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
-    color: #B3E5FC;
+    color: #d5e5f4;
     background-color: transparent;
   }
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
-    color: #B3E5FC;
+    color: #d5e5f4;
     background-color: #0273b0;
   }
   .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a, .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:focus {
@@ -7048,13 +7283,13 @@ tbody.collapse.in {
   color: #fff;
 }
 .navbar-default .navbar-link:hover {
-  color: #B3E5FC;
+  color: #d5e5f4;
 }
 .navbar-default .btn-link {
   color: #fff;
 }
 .navbar-default .btn-link:hover, .navbar-default .btn-link:focus {
-  color: #B3E5FC;
+  color: #d5e5f4;
 }
 .navbar-default .btn-link[disabled]:hover, .navbar-default .btn-link[disabled]:focus, fieldset[disabled] .navbar-default .btn-link:hover, fieldset[disabled] .navbar-default .btn-link:focus {
   color: #ccc;
@@ -7420,7 +7655,7 @@ a.badge:hover, a.badge:focus {
   padding: 30px 15px;
   margin-bottom: 30px;
   color: inherit;
-  background-color: #B3E5FC;
+  background-color: #d5e5f4;
 }
 .jumbotron h1,
 .jumbotron .h1 {
@@ -7432,7 +7667,7 @@ a.badge:hover, a.badge:focus {
   font-weight: 200;
 }
 .jumbotron > hr {
-  border-top-color: #82d4fa;
+  border-top-color: #acccea;
 }
 .container .jumbotron, .container-fluid .jumbotron {
   border-radius: 6px;
@@ -9224,6 +9459,7 @@ button.close {
   }
 }
 .view-animation.ng-enter {
+  position: absolute;
   -webkit-animation: fadeIn 1s;
   -moz-animation: fadeIn 1s;
   -o-animation: fadeIn 1s;
@@ -9251,13 +9487,69 @@ button.close {
   animation: fadeOut 1s;
 }
 
+/*
+[ui-view].ng-enter, [ui-view].ng-leave {
+  position: fixed;
+  left: 0;
+  right: 0;
+  -webkit-transition:all .5s ease-in-out;
+    -moz-transition:all .5s ease-in-out;
+    -o-transition:all .5s ease-in-out;
+    transition:all .5s ease-in-out;
+}
+
+[ui-view].ng-enter {
+  opacity: 0;
+  -webkit-transform:scale3d(0.5, 0.5, 0.5);
+  -moz-transform:scale3d(0.5, 0.5, 0.5);
+  transform:scale3d(0.5, 0.5, 0.5);
+}
+
+[ui-view].ng-enter-active {
+  opacity: 1;
+  -webkit-transform:scale3d(1, 1, 1);
+  -moz-transform:scale3d(1, 1, 1);
+  transform:scale3d(1, 1, 1);
+}
+
+[ui-view].ng-leave {
+  opacity: 1; 
+  -webkit-transform:translate3d(0, 0, 0);
+  -moz-transform:translate3d(0, 0, 0);
+  transform:translate3d(0, 0, 0);
+}
+
+[ui-view].ng-leave-active {
+  opacity: 0;
+  -webkit-transform:translate3d(100px, 0, 0);
+  -moz-transform:translate3d(100px, 0, 0);
+  transform:translate3d(100px, 0, 0);
+}
+*/
+.animated-element.ng-enter {
+  -webkit-transition: 1.5s linear all;
+  transition: 1.5s linear all;
+  opacity: 0;
+}
+
+.animated-element.ng-enter.ng-enter-active {
+  opacity: 1;
+}
+
 .form-auth {
-  background-color: #B3E5FC;
+  background-color: #2C70AF;
+  position: relative;
+}
+
+.pick-right {
+  position: absolute;
+  top: 2px;
+  right: 2px;
 }
 
 /* Form required fields*/
 .form-user {
-  background-color: #B3E5FC;
+  background-color: #d5e5f4;
 }
 
 .form-group, .form-group-chat {
@@ -9338,7 +9630,7 @@ ul, li {
 }
 
 #frame-container {
-  background-color: #455A64;
+  background-color: #fff;
   position: relative;
   height: 100%;
   width: 100%;
@@ -9349,7 +9641,7 @@ ul, li {
 }
 
 #container {
-  background-color: #111;
+  background-color: #E2E2E2;
   height: 100%;
   width: 100%;
 }
@@ -9362,7 +9654,7 @@ ul, li {
   left: -50px;
   right: -50px;
   height: 50px;
-  background-color: #607D8B;
+  background-color: #2C70AF;
 }
 
 #bar-top {
@@ -9377,7 +9669,7 @@ ul, li {
   top: 0px;
   bottom: 0px;
   width: 50px;
-  background-color: #CFD8DC;
+  background-color: #fff;
 }
 
 #bar-left {
@@ -9386,12 +9678,16 @@ ul, li {
 
 #bar-right {
   right: -50px;
-  z-index: 9999;
+  z-index: 1500;
 }
 
 ul.list-unstyled, ul.rooms, ul.chat-status {
   padding-left: 0;
   list-style: none;
+}
+
+li.btn-action {
+  float: left;
 }
 
 li.btn-action a, li.btn-action a:hover, li.btn-action a:focus {
@@ -9406,6 +9702,10 @@ li.btn-action a, li.btn-action a:hover, li.btn-action a:focus {
   cursor: pointer;
 }
 
+li.active a, li.active a:hover, li.active a:focus {
+  color: #212121;
+}
+
 li.list-horizontal {
   display: inline-block;
   margin-right: 2px;
@@ -9413,24 +9713,6 @@ li.list-horizontal {
 
 li.list-vertical {
   margin-bottom: 2px;
-}
-
-ul.list-horizontal-right {
-  position: absolute;
-  right: 0;
-}
-
-.logo {
-  color: #FF5722;
-}
-
-#welcome {
-  background-color: red;
-}
-#welcome h1, #welcome h2, #welcome h3 {
-  margin: 0;
-  padding: 0;
-  color: #727272;
 }
 
 [ng-cloak] {
@@ -9442,7 +9724,7 @@ ul.list-horizontal-right {
   bottom: 0;
   height: 100%;
   width: 100%;
-  background-color: red;
+  background-color: #2C70AF;
   left: 0;
   position: absolute;
   right: 0;
@@ -9455,7 +9737,7 @@ ul.list-horizontal-right {
   display: none;
 }
 [ng-cloak].overlay:before {
-  color: #B3E5FC;
+  color: #fff;
   font-size: 4em;
   position: absolute;
   top: 50%;
@@ -9466,10 +9748,12 @@ ul.list-horizontal-right {
   position: absolute !important;
   top: 0;
   left: 0;
+  right: 0;
   width: 100%;
   height: 100%;
-  background-color: #000000 !important;
-  opacity: 0.5 !important;
+  background-color: #111111 !important;
+  opacity: 0.8 !important;
+  z-index: 9999;
 }
 
 .modal-center {
@@ -9483,5 +9767,11 @@ ul.list-horizontal-right {
 }
 
 .ng-pageslide {
-  background: #eee;
+  background-color: #607D8B;
+}
+
+.page {
+  height: 100%;
+  width: 100%;
+  background-color: #eee;
 }

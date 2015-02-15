@@ -31,14 +31,15 @@ var config = {
                 'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
                 'bower_components/angular-animate/angular-animate.js',
                 'bower_components/ngstorage/ngStorage.js',
-                'bower_components/angular-jwt/dist/angular-jwt.js'
+                'bower_components/angular-jwt/dist/angular-jwt.js',
+                'bower_components/angular-ui-router-anim-in-out/anim-in-out.js'
             ],
             fonts: [
                 'bower_components/bootstrap-sass-official/assets/fonts/bootstrap/**',
                 'bower_components/fontawesome/fonts/**'
             ],
             assets: [
-                SRC_FOLDER + '/favicon.ico',
+                SRC_FOLDER + '/favicon.png',
                 SRC_FOLDER + '/humans.txt',
                 SRC_FOLDER + '/robots.txt'
             ],

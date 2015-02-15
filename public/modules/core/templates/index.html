@@ -1,15 +1,19 @@
 
-  <div class="page">
-    <h1 class="foo"><span class="fa fa-home"></span><span  data-ng-bind="core.welcome"></span></h1>
-    <h2  data-ng-bind="core.prologue"> </h2>
-    <h3 show-version></h3>
-    <p data-ng-if="!global.isAuthenticated">
-        <a href="" class="btn btn-lg btn-success" data-ng-click="global.signin()"><i class="fa fa-sign-in"></i> Sign In</a>
-        <a href="" class="btn btn-lg btn-primary" data-ng-click="global.register()"><i class="fa fa-user"></i> Register</a>
-    </p>
-    <p data-ng-if="global.isAuthenticated">
-       <i class="fa fa-user"></i> <span ng-bind="global.isAuthenticated.username"></span></span>
-    </p>
-  </div>
+<div class="page">
+<div class="container">
+    <div class="jumbotron">
+      <h1><span class="fa fa-home"></span>Welcome</h1>
+      <h2>Test Test Test</h2>
+      <h3 show-version></h3>
+      <p data-ng-if="!global.isAuthenticated">
+          <a href="" class="btn btn-lg btn-success"  data-ui-sref="session.signin"><i class="fa fa-sign-in"></i> Sign In</a>
+          <a href="" class="btn btn-lg btn-primary"  data-ui-sref="session.register"><i class="fa fa-user"></i> Register</a>
+      </p>
+      <p data-ng-if="global.isAuthenticated">
+         <i class="fa fa-user"></i> <span ng-bind="global.isAuthenticated.username"></span></span>
+      </p>
+   </div>
+</div>
+</div>
 
   

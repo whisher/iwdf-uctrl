@@ -13,7 +13,7 @@ $(document).ready(function () {
     _c11_3DGridView.main();
     _map = _c11_3DGridView.getMap();
     var check = setInterval(getEarthData, 50);
-
+ 
     //$('.backContainer button').click(setViewWebGLGlobe);
 
 

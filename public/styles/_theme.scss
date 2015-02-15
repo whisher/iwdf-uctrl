@@ -9,7 +9,7 @@ ul,li{
       border:0;
 }
 #frame-container {
-    background-color: #455A64;
+    background-color: #fff;
     position: relative;
     height: 100%;
     width: 100%;
@@ -19,7 +19,7 @@ ul,li{
     box-sizing:border-box;
 }
 #container {
-    background-color: #eee;
+    background-color: #E2E2E2;
     height: 100%;
     width: 100%;
 }
@@ -38,7 +38,7 @@ ul.list-unstyled {
   list-style: none;
 }
 li.btn-action{
-    
+    float:left;
 }
 li.btn-action a,li.btn-action a:hover,li.btn-action a:focus {
     display: block;
@@ -51,23 +51,15 @@ li.btn-action a,li.btn-action a:hover,li.btn-action a:focus {
     text-align: center;
     cursor:pointer;
 }
-
+li.active a,li.active a:hover,li.active a:focus{
+    color: #212121;
+}
 li.list-horizontal{
     display: inline-block;
     margin-right: 2px;
 }
 li.list-vertical{
     margin-bottom: 2px;
-}
-ul.list-horizontal-right{
-    position: absolute;
-    right: 0;
-}
-
-.logo{
-  @extend .fa; 
-  @extend .fa-bolt; 
-  color: #FF5722;
 }
 
 [ng-cloak] {display: none;}
@@ -128,15 +120,10 @@ ul.list-horizontal-right{
     margin-left: -10%;
 }
 .ng-pageslide {
-  background: #ddd;
+  background-color: #607D8B;
 }
 .page {
    height: 100%;
   width: 100%;
-  background: #eee;
-  h1{
-    padding:0;
-    margin:0;
-    text-align:center !important;
-  }
+  background-color: #eee;
 }
