@@ -71,7 +71,7 @@ var config = {
                 scripts: RELEASE_FOLDER + '/scripts',
                 fonts: RELEASE_FOLDER + '/fonts',
                 images: RELEASE_FOLDER + '/images',
-                gmgrid:BUILD_FOLDER + '/modules/gmgrid'
+                gmgrid:RELEASE_FOLDER + '/modules/gmgrid'
             }
         }
     },

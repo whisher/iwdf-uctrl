@@ -17,15 +17,22 @@ module.exports = function(app, auth, configs, jwt, passport) {
 	});
 	app.route('/auth/screenshot').post(function (req, res) {
     		//var name = req.params.name;
+            console.log(req.user);
     		var webshot = require('webshot');
     		var id = Math.random().toString(36).slice(2);
                         var options = {
                             onLoadFinished: function() {
-                                var links = document.getElementsByTagName('a');
-                                for (var i=0; i<links.length; i++) {
-                                    var link = links[i];
-                                    //link.innerHTML = 'My custom text';
-                                } 
+                                var elems = document.body.getElementsByTagName('*');
+                                    for (var i=0; i<elems.length; i++) {
+                                        var elem = elems[i];
+                                        if(elem.dataset.ngShow){
+                                            if(req.user){
+                                                if(elem.dataset.ngShow.indexOf('!') !== -1){
+                                                    elem.style.display= 'display';
+                                                }
+                                            }
+                                        }
+                                    } 
                             }
                         };
 		webshot(req.body.url, configs.rootPath +'/screenshots/'+ id +'.png', options, function(err) {
@@ -33,10 +40,7 @@ module.exports = function(app, auth, configs, jwt, passport) {
 				res.json({ id: id});
   			}
 		});
-    		console.log('URLfff',req.body.url);
-    		
-    		//res.render('partials/' + name);
-	});
+    	});
 };
 
 

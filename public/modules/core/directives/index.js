@@ -226,13 +226,29 @@ function pageslide($rootScope, $templateCache){
         };
     }
 
-
+function my(VERSION) {
+  return {
+    restrict: 'A',
+    link: function(scope, element) {
+        var elems = document.body.getElementsByTagName('*');
+        for (var i=0; i<elems.length; i++) {
+            var elem = elems[i];
+            if(elem.dataset.ngShow){
+                if(elem.dataset.ngShow.indexOf('!') === -1){console.log(elem.setAttribute('data-ng-show','false'));
+                    elem.style.display= 'display';
+                    elem.dataset.ngShow = true;
+                }
+            }
+        } 
+    }
+  };
+}
 
 angular.module('core.directives', [])
     .directive('showVersion', showVersion)
     .directive('userFeedback', userFeedback)
     .directive('showErrors', showErrors)
-    .directive('pageslide', pageslide);
-    
+    .directive('pageslide', pageslide)
+     .directive('my', my);
 })();
 
