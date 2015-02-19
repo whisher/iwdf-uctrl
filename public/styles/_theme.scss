@@ -26,10 +26,10 @@ ul,li{
 #bar-top,#bar-right,#bar-bottom,#bar-left{
     position:absolute;    
 }
-#bar-top,#bar-bottom{left:-50px;right:-50px;height:50px;background-color:#2C70AF}
+#bar-top,#bar-bottom{left:-50px;right:-50px;height:50px;background-color:#FFFFFF}
 #bar-top{top:-50px}
 #bar-bottom{bottom:-50px}
-#bar-left,#bar-right{top:0px;bottom:0px;width:50px;background-color:#fff;}
+#bar-left,#bar-right{top:0px;bottom:0px;width:50px;background-color:#2C70AF;}
 #bar-left{left:-50px}
 #bar-right{right:-50px;z-index: 1500;}
 
@@ -40,19 +40,57 @@ ul.list-unstyled {
 li.btn-action{
     float:left;
 }
-li.btn-action a,li.btn-action a:hover,li.btn-action a:focus {
+#bar-top li.btn-action a,#bar-top li.btn-action a:hover,#bar-top li.btn-action a:focus {
     display: block;
     width: 50px;
     height: 50px;
     line-height: 50px;
-    background-color:#727272; 
+    background-color:#FFFFFF; 
     color: #fff;
     font-size: 24px;
     text-align: center;
     cursor:pointer;
 }
-li.active a,li.active a:hover,li.active a:focus{
-    color: #212121;
+#bar-top li.btn-action-reverse a,#bar-top li.btn-action-reverse a:hover,#bar-top li.btn-action-reverse a:focus {
+    display: block;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    background-color:#FFFFFF; 
+    color: #2EFFFF;
+    font-size: 24px;
+    text-align: center;
+    cursor:pointer;
+}
+.btn-logged{
+  color: #fff;
+}
+.dropdown-toggle{
+ 
+}
+#bar-top li.logo a,#bar-top li.logo a:hover,#bar-top li.logo a:focus {
+    display: block;
+    width: 71px;
+    height: 50px;
+    line-height: 50px;
+    cursor:pointer;
+}
+#bar-top li.active a,#bar-top li.active a:hover,#bar-top li.active a:focus{
+    color: #2E2D2F;
+}
+#bar-right li.btn-action a,#bar-right li.btn-action a:hover,#bar-right li.btn-action a:focus {
+    display: block;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    background-color:#2C70AF; 
+    color: #fff;
+    font-size: 24px;
+    text-align: center;
+    cursor:pointer;
+}
+#bar-right li.active a,#bar-right li.active a:hover,#bar-right li.active a:focus{
+    color: #2E2D2F;
 }
 li.list-horizontal{
     display: inline-block;

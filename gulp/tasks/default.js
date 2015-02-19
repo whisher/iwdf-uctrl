@@ -13,7 +13,7 @@ module.exports = gulp.task('default', function() {
     } else {
         runSequence(
                 'clean',
-                ['index', 'styles', 'fonts', 'assets', 'templates', 'hint'],
+                ['index', 'styles', 'fonts', 'assets', 'images', 'templates', 'hint'],
                 ['vendor','scripts','gmgrid'],
                 'watch'
        );
