@@ -2,6 +2,7 @@ html, body {
   height:100%;
       margin:0;
       padding:0;
+       background-color: #fff;
 }
 ul,li{
   margin:0;
@@ -13,7 +14,7 @@ ul,li{
     position: relative;
     height: 100%;
     width: 100%;
-    border:50px solid #9E9E9E;
+    border:50px solid #fff;
     -moz-box-sizing:border-box;
     -webkit-box-sizing:border-box;
     box-sizing:border-box;
@@ -26,7 +27,7 @@ ul,li{
 #bar-top,#bar-right,#bar-bottom,#bar-left{
     position:absolute;    
 }
-#bar-top,#bar-bottom{left:-50px;right:-50px;height:50px;background-color:#FFFFFF}
+#bar-top,#bar-bottom{left:0;right:0;height:50px;background-color:#FFFFFF}
 #bar-top{top:-50px}
 #bar-bottom{bottom:-50px}
 #bar-left,#bar-right{top:0px;bottom:0px;width:50px;background-color:#2C70AF;}
@@ -57,7 +58,7 @@ li.btn-action{
     height: 50px;
     line-height: 50px;
     background-color:#FFFFFF; 
-    color: #2EFFFF;
+    color: #2C70AF;
     font-size: 24px;
     text-align: center;
     cursor:pointer;
@@ -66,14 +67,14 @@ li.btn-action{
   color: #FFFFFF;
 }
 .dropdown-toggle{
-  background-color: #2EFFFF;
+  background-color: #2C70AF;
   display: block;
   height: 50px;
   line-height: 50px;
 }
 #bar-top li.logo a,#bar-top li.logo a:hover,#bar-top li.logo a:focus {
     display: block;
-    width: 71px;
+    width: 212px;
     height: 50px;
     line-height: 50px;
     cursor:pointer;
