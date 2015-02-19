@@ -9715,7 +9715,14 @@ li.btn-action {
 }
 
 .btn-logged {
-  color: #fff;
+  color: #FFFFFF;
+}
+
+.dropdown-toggle {
+  background-color: #2EFFFF;
+  display: block;
+  height: 50px;
+  line-height: 50px;
 }
 
 #bar-top li.logo a, #bar-top li.logo a:hover, #bar-top li.logo a:focus {
