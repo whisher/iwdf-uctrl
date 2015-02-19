@@ -7,7 +7,7 @@ module.exports = gulp.task('default', function() {
     if (release) { 
         runSequence(
                 'clean',
-                ['index', 'styles', 'fonts', 'assets', 'templates'],
+                ['index', 'styles', 'fonts', 'assets','images', 'templates'],
                 ['vendor','scripts','gmgrid']
                );
     } else {
