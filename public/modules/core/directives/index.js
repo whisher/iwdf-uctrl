@@ -226,20 +226,23 @@ function pageslide($rootScope, $templateCache){
         };
     }
 
-function my(VERSION) {
+function sliderBar() {
   return {
     restrict: 'A',
+    scope:{
+        bartype: '@'
+    },
     link: function(scope, element) {
-        var elems = document.body.getElementsByTagName('*');
-        for (var i=0; i<elems.length; i++) {
-            var elem = elems[i];
-            if(elem.dataset.ngShow){
-                if(elem.dataset.ngShow.indexOf('!') === -1){console.log(elem.setAttribute('data-ng-show','false'));
-                    elem.style.display= 'display';
-                    elem.dataset.ngShow = true;
-                }
-            }
-        } 
+        var barRight = angular.element(document.getElementById('bar-right'));
+        var barLeft = angular.element(document.getElementById('bar-left'));
+        element.on('mouseenter',function(e){
+             barLeft.addClass('slide-out-left');
+             barRight.addClass('slide-out-right');
+        });
+        element.on('mouseleave',function(e){
+             barRight.removeClass('slide-out-right');
+             barLeft.removeClass('slide-out-left');
+        });
     }
   };
 }
@@ -249,6 +252,6 @@ angular.module('core.directives', [])
     .directive('userFeedback', userFeedback)
     .directive('showErrors', showErrors)
     .directive('pageslide', pageslide)
-     .directive('my', my);
+     .directive('sliderBar', sliderBar);
 })();
 

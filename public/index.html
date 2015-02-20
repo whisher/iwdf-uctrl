@@ -31,27 +31,27 @@
                         <div class="col-md-4">DUE
                         </div>
                         <div class="col-md-4 clearfix">
-                        <ul class="list-unstyled pull-right">
+                            <ul class="list-unstyled pull-right">
                                 <li class="btn-action list-horizontal btn-action-reverse" data-ng-if="!global.isAuthenticated">
                                     <a href="" data-ng-click="global.signin()">
                                         <span class="fa fa-sign-in"></span>
                                     </a>
                                 </li>
-                                <li data-ng-if="global.isAuthenticated">
-                                    <div class="btn-group btn-group-lg" dropdown>
-                                            <a class="btn btn-large btn-logged dropdown-toggle" dropdown-toggle>
-                                                <i class="fa fa-user"></i> <span ng-bind="global.isAuthenticated.username"></span><span class="caret"></span>
-                                            </a>
-                                            <ul class="dropdown-menu" role="menu">
-                                                <li><a href="" data-ng-click="global.logout()">Logout</a></li>
-                                            </ul>
-                                    </div>
+                                <li data-ng-if="global.isAuthenticated" class="list-horizontal btn-logged">
+                                    <span class="dropdown" dropdown on-toggle="toggled(open)">
+                                        <a href class="dropdown-toggle" dropdown-toggle>
+                                          <i class="fa fa-user"></i> <span ng-bind="global.isAuthenticated.username"></span><span class="caret"></span>  
+                                        </a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="" data-ng-click="global.logout()">Logout</a></li>
+                                        </ul>
+                                    </span>
                                 </li>
                             </ul>
                         </div>
                 </div>
             </div><!--bar-top-->
-            <div id="bar-right">
+            <div id="bar-right" data-slider-bar bartype="right">
                 <ul class="list-unstyled" data-ng-if="global.isAuthenticated">
                     <li ui-sref-active="active" class="btn-action list-vertical">
                         <a data-ui-sref="gmgrid"><span class="fa fa-globe"></span></a>
@@ -76,7 +76,7 @@
                 </ul>
             </div>
             <div id="bar-bottom"></div>
-            <div id="bar-left"></div>
+            <div id="bar-left" data-slider-bar bartype="left"></div>
         </div>
         <!--vendor-->
         <!--scripts-->

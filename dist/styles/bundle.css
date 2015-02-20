@@ -9571,6 +9571,7 @@ html, body {
   margin: 0;
   padding: 0;
   background-color: #fff;
+  overflow: hidden;
 }
 
 ul, li {
@@ -9622,13 +9623,38 @@ ul, li {
   background-color: #2C70AF;
 }
 
-#bar-left {
-  left: -50px;
+/*#bar-left{left:-90px}
+#bar-right{right:-90px;z-index: 1500;}*/
+#bar-right {
+  -moz-transition: right .1s;
+  -webkit-transition: right .1s;
+  -o-transition: right .1s;
+  transition: right .1s;
+  right: -90px;
 }
 
-#bar-right {
+#bar-right.slide-out-right {
+  -moz-transition: right 1s;
+  -webkit-transition: right 1s;
+  -o-transition: right 1s;
+  transition: right 1s;
   right: -50px;
-  z-index: 1500;
+}
+
+#bar-left {
+  -moz-transition: left .1s;
+  -webkit-transition: left .1s;
+  -o-transition: left .1s;
+  transition: left .1s;
+  left: -90px;
+}
+
+#bar-left.slide-out-left {
+  -moz-transition: left 1s;
+  -webkit-transition: left 1s;
+  -o-transition: left 1s;
+  transition: left 1s;
+  left: -50px;
 }
 
 ul.list-unstyled {
@@ -9664,8 +9690,15 @@ li.btn-action {
   cursor: pointer;
 }
 
-.btn-logged {
-  color: #FFFFFF;
+#bar-top li.btn-logged a, #bar-top li.btn-logged a:hover, #bar-top li.btn-logged a:focus {
+  display: block;
+  width: auto;
+  height: 50px;
+  line-height: 50px;
+  background-color: #FFFFFF;
+  color: #2C70AF;
+  font-size: 17px;
+  cursor: pointer;
 }
 
 .dropdown-toggle {
