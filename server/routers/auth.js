@@ -35,7 +35,7 @@ module.exports = function(app, auth, configs, jwt, passport) {
                                     } 
                             }
                         };
-		webshot(req.body.url, configs.rootPath +'/screenshots/'+ id +'.png', options, function(err) {
+		webshot('', configs.rootPath +'/screenshots/'+ id +'.png', options, function(err) {
   			if(!err){
 				res.json({ id: id});
   			}
