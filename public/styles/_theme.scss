@@ -91,15 +91,22 @@ li.btn-action{
     text-align: center;
     cursor:pointer;
 }
-#bar-top li.btn-logged a,#bar-top li.btn-logged a:hover,#bar-top li.btn-logged a:focus {
+li.btn-logged {
     display: block;
     width:auto;
     height: 50px;
-    line-height: 50px;
     background-color:#FFFFFF; 
-    color: #2C70AF;
-    font-size: 17px;
-    cursor:pointer;
+}
+li.btn-logged .user-logged{
+  margin-top:10px;
+  font-size: 14px;
+  line-height: 13px;
+  color: #2C70AF;
+}
+li.btn-logged .user-coins{
+    font-size: 12px;
+    line-height: 14px;
+    color: #727272;
 }
 
 .dropdown-toggle{

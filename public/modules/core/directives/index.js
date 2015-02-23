@@ -243,6 +243,10 @@ function sliderBar() {
              barRight.removeClass('slide-out-right');
              barLeft.removeClass('slide-out-left');
         });
+        scope.$on('$destroy', function() {
+            element.off('mouseenter');
+            element.off('mouseleave');
+        });
     }
   };
 }

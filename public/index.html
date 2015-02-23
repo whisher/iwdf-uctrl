@@ -37,15 +37,18 @@
                                         <span class="fa fa-sign-in"></span>
                                     </a>
                                 </li>
-                                <li data-ng-if="global.isAuthenticated" class="list-horizontal btn-logged">
-                                    <span class="dropdown" dropdown on-toggle="toggled(open)">
-                                        <a href class="dropdown-toggle" dropdown-toggle>
-                                          <i class="fa fa-user"></i> <span ng-bind="global.isAuthenticated.username"></span><span class="caret"></span>  
-                                        </a>
-                                        <ul class="dropdown-menu">
-                                            <li><a href="" data-ng-click="global.logout()">Logout</a></li>
-                                        </ul>
-                                    </span>
+                               <li data-ng-if="global.isAuthenticated" class="btn-action list-horizontal btn-logged">
+                                    <div class="user-logged">
+                                        <i class="fa fa-user"></i> <span ng-bind="global.isAuthenticated.username"></span>
+                                    </div>
+                                   <div class="user-coins">
+                                        <span class="fa fa-btc"></span> 122333,97
+                                    </div>
+                                </li>
+                                 <li class="btn-action list-horizontal btn-action-reverse" data-ng-if="global.isAuthenticated">
+                                    <a href="" data-ng-click="global.logout()">
+                                        <span class="fa fa-sign-out"></span>
+                                    </a>
                                 </li>
                             </ul>
                         </div>
