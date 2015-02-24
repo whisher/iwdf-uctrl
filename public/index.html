@@ -21,7 +21,7 @@
                             <span id="user-icon" data-ng-if="global.isAuthenticated">
                                 <i class="fa fa-user"></i> 
                             </span>
-                            <span id="user-name" data-ng-if="global.isAuthenticated" ng-bind="global.isAuthenticated.username">
+                            <span id="user-name" data-ng-if="global.isAuthenticated">{{ ::global.isAuthenticated.username | ucfirst}}
                             </span>
                         </a>
                     </div>
