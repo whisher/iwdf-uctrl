@@ -1,0 +1,17 @@
+ul,li{
+  margin:0;
+  padding:0;
+}
+li.btn-action a,li.btn-action a:hover,li.btn-action a:focus {
+   display: block;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    background-color:#2C70AF; 
+    color: #fff;
+    font-size: 30px;
+    text-align: center;
+    cursor:pointer;
+    margin-top:3px;
+    margin-left:3px;
+}

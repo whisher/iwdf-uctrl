@@ -41,6 +41,11 @@
                 </div><!--row-top-->
             </div><!--bar-top-->
             <div id="bar-right">
+                <ul class="list-unstyled" data-ng-if="global.isAuthenticated">
+                    <li ui-sref-active="active" class="btn-action list-vertical">
+                        <a data-ui-sref="gmgrid"><span class="fa fa-globe"></span></a>
+                    </li>
+                </ul>
             </div><!--bar-right-->
             <div id="bar-bottom">
             </div><!--bar-bottom-->
