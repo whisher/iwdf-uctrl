@@ -1,9 +1,39 @@
 .form-auth{
 	background-color:#2C70AF;
 	position:relative;
+	h3{
+		color:#FFFFFF;
+	}
 }
 .pick-right{
+            background-color:#2C70AF;
+            border: none;
 	position:absolute;
 	top: 2px;
 	right:2px;
+	color:#FFFFFF;
+	&,
+ 	&:active,
+  	&.active {
+	    	&:focus,
+	    	&.focus {
+	      		@include tab-focus;
+	    	}
+  	}
+
+  	&:hover,
+  	&:focus,
+  	&.focus {
+  		background-color: #2C70AF;
+   		color: #FFFFFF;
+    		text-decoration: none;
+  	}
+
+  	&:active,
+  	&.active {
+    		outline: 0;
+    		background-image: none;
+    		@include box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
+  	}
+
 }

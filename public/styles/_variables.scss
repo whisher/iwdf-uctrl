@@ -1,46 +1,21 @@
-//  http://www.materialpalette.com/light-blue/deep-orange
+/* Theme */
 $brand-base: #2C70AF !default;
-$darkPrimaryColor:   #0288D1 !default;
-$primaryColor:       #03A9F4 !default;
+$darkPrimaryColor:  darken($brand-base, 6.5%) !default; 
+$primaryColor:       $brand-base !default;
 $lightPrimaryColor:  lighten($brand-base, 46.7%) !default;
-$textPrimaryColor:   #FFFFFF !default;
-$accentColor:        #FF5722 !default;
 $primaryTextColor:   #212121 !default;
-$secondaryTextColor: #727272 !default;
-$dividerColor:       #B6B6B6 !default;
-//
+$textPrimaryColor:   #FFFFFF !default;
+$splash-screen-bg:  $brand-base !default;
+$splash-screen-txt:  #FFFFFF !default;
 
-
-// bootstrap
-$body-bg:              #FAFAFA !default;
-$text-color:            $textPrimaryColor !default;
-$navbar-default-bg:                $darkPrimaryColor !default;
-$navbar-default-border:            darken($navbar-default-bg, 6.5%) !default;
-
-// Navbar links
-$navbar-default-link-color:                #fff !default;
-$navbar-default-link-hover-color:          $lightPrimaryColor !default;
-$navbar-default-link-hover-bg:             transparent !default;
-$navbar-default-link-active-color:         $lightPrimaryColor !default;
-$navbar-default-link-active-bg:            darken($navbar-default-bg, 6.5%) !default;
-$navbar-default-link-disabled-color:       #ccc !default;
-$navbar-default-link-disabled-bg:          transparent !default;
-
+/* Bootstrap */
+$body-bg:               #FFFFFF !default;
+$text-color:            #212121 !default;
 $jumbotron-bg: $lightPrimaryColor !default;
-$dropdown-bg: #2C70AF !default;
 $icon-font-path: "../fonts/" !default;
 $fa-font-path:   "../fonts" !default;  
-
 $font-family-sans-serif:  sans-serif, "Helvetica Neue", Helvetica, Arial !default;
 
-// animate.css
-$use-fadeIn: true;
-$use-fadeOut: true;
-$use-fadeInLeft: true;
-$use-fadeOutLeft: true;
-$use-bounceOut: true;
-$use-bounceIn: true;
-// animate app
-$view-animation : true;
-$repeat-animation-errors : true;
+
+
 

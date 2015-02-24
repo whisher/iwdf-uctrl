@@ -1,0 +1,51 @@
+/* Splash Screen */
+[ng-cloak] {display: none;}
+[ng-cloak].overlay {
+  display: block !important;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+  background-color: $splash-screen-bg;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index:9999;
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+  div{
+    display:none;
+  }
+  &:before {
+    @extend .fa; 
+    @extend .fa-circle-o-notch; 
+    @extend .fa-spin; 
+    color: $splash-screen-txt;
+    font-size: 4em;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  }
+}
+
+/* Modal Angular Ui */
+.modal-backdrop {
+  position:absolute !important;
+  top:0;
+  left:0;
+  right:0;
+  width:100%;
+  height:100%;
+  background-color:#111111 !important;
+  opacity: 0.9 !important;
+  z-index:9999;
+}
+.modal-center{
+    position: fixed;
+    top: 30%;
+    left: 18.5%;
+    z-index: 1050;
+    width: 80%;
+    height: 80%;
+    margin-left: -10%;
+}
