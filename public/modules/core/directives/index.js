@@ -233,19 +233,19 @@ function sliderBar() {
         bartype: '@'
     },
     link: function(scope, element) {
-        var barRight = angular.element(document.getElementById('bar-right'));
-        var barLeft = angular.element(document.getElementById('bar-left'));
+        var barRightOuter = angular.element(document.getElementById('bar-right-outer'));
+        var barLeftOuter = angular.element(document.getElementById('bar-left-outer'));
         element.on('mouseenter',function(e){
-             barLeft.addClass('slide-out-left');
-             barRight.addClass('slide-out-right');
+            barRightOuter.addClass('right-slider');
+            barLeftOuter.addClass('left-slider');
         });
         element.on('mouseleave',function(e){
-             barRight.removeClass('slide-out-right');
-             barLeft.removeClass('slide-out-left');
+            barRightOuter.removeClass('right-slider');
+            barLeftOuter.removeClass('left-slider');
         });
         scope.$on('$destroy', function() {
-            element.off('mouseenter');
-            element.off('mouseleave');
+            barRightOuter.off('mouseenter');
+            barLeftOuter.off('mouseleave');
         });
     }
   };

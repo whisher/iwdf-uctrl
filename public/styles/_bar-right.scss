@@ -1,17 +1,22 @@
-ul,li{
-  margin:0;
-  padding:0;
+li.list-vertical{
+    margin-bottom: 2px;
 }
-li.btn-action a,li.btn-action a:hover,li.btn-action a:focus {
-   display: block;
-    width: 50px;
-    height: 50px;
-    line-height: 50px;
-    background-color:#2C70AF; 
-    color: #fff;
-    font-size: 30px;
-    text-align: center;
-    cursor:pointer;
-    margin-top:3px;
-    margin-left:3px;
+li.btn-action.active{
+    a{
+        color: #9E9E9E;
+    }
+}
+li.btn-action{
+     a {
+        display: block;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        background-color:#2C70AF; 
+        color: #FFFFFF;
+        font-size: 28px;
+        text-align: center;
+        cursor:pointer;
+        text-indent: 2px;
+    }
 }

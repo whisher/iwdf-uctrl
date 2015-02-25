@@ -12,17 +12,18 @@ ul,li{
   border:0;
 }
 #container {
-    background-color: $body-bg;
+    background-color: $container-bg;
     position: relative;
     height: 100%;
     width: 100%;
-    border:50px solid $body-bg;
+    border-top:50px solid $container-border;
+    border-bottom:50px solid $container-border;
     -moz-box-sizing:border-box;
     -webkit-box-sizing:border-box;
     box-sizing:border-box;
 }
 #content {
-    background-color: $body-bg;
+    background-color: $content-bg;
     height: 100%;
     width: 100%;
 }
@@ -30,10 +31,10 @@ ul,li{
     position:absolute;    
 }
 #bar-top,#bar-bottom{
-  left:-50px;
-  right:-50px;
+  left:0px;
+  right:0px;
   height:50px;
-  background-color:#FFFFFF;
+  background-color:$bar-horizontal;
 }
 #bar-top{
   top:-50px;
@@ -45,11 +46,58 @@ ul,li{
   top:0;
   bottom:0;
   width:50px;
-  background-color:$brand-base;
 }
-#bar-left{
-  left:-50px;
+#bar-left,#bar-right{
+  background-color:$bar-vertical;
 }
-#bar-right{
-  right:-50px;
+#bar-right-outer,#bar-left-outer{
+  position:absolute;  
+  top:0;
+  bottom:0;
+  width:50px;
 }
+#bar-right-outer,#bar-left-outer{
+  background-color:trasparent;
+}
+#bar-right-outer{
+  right:0px;
+  #bar-right{
+    -moz-transition: right .1s;
+    -webkit-transition: right .1s;
+    -o-transition: right .1s;
+    transition: right .1s;
+    right:-50px;
+  }
+}
+#bar-right-outer.right-slider{
+  right:0px;
+  #bar-right{
+    -moz-transition: right 1s;
+    -webkit-transition: right 1s;
+    -o-transition: right 1s;
+    transition: right 1s;
+    right:0;
+  }
+}
+#bar-left-outer{
+  left:0px;
+  #bar-left{
+    -moz-transition: left .1s;
+    -webkit-transition: left .1s;
+    -o-transition: left .1s;
+    transition: left .1s;
+    left:-50px;
+  }
+}
+#bar-left-outer.left-slider{
+  left:0px;
+  #bar-left{
+    -moz-transition: left 1s;
+    -webkit-transition: left 1s;
+    -o-transition: left 1s;
+    transition: left 1s;
+    left:0;
+  }
+}
+
+

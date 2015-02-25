@@ -40,18 +40,37 @@
                     </div>
                 </div><!--row-top-->
             </div><!--bar-top-->
-            <div id="bar-right">
-                <ul class="list-unstyled" data-ng-if="global.isAuthenticated">
-                    <li ui-sref-active="active" class="btn-action list-vertical">
-                        <a data-ui-sref="gmgrid"><span class="fa fa-globe"></span></a>
-                    </li>
-                </ul>
-            </div><!--bar-right-->
+            <div id="bar-right-outer" data-slider-bar bartype="right">
+                <div id="bar-right">
+                    <ul class="list-unstyled" data-ng-if="global.isAuthenticated">
+                        <li ui-sref-active="active" class="btn-action list-vertical">
+                            <a data-ui-sref="gmgrid"><span class="fa fa-globe"></span></a>
+                        </li>
+                        <li ui-sref-active="active" class="btn-action list-vertical">
+                            <a data-ui-sref="wrench"><span class="fa fa-wrench"></span></a>
+                        </li>
+                        <li ui-sref-active="active" class="btn-action list-vertical">
+                            <a data-ui-sref="search"><span class="fa fa-search"></span></a>
+                        </li>
+                        <li ui-sref-active="active" class="btn-action list-vertical">
+                            <a data-ui-sref="segret"><span class="fa fa-eye"></span></a>
+                        </li>
+                        <li class="btn-action list-vertical" data-ng-controller="CameraController as camera">
+                            <a href="" data-ng-click="camera.screenShot()"><span class="fa fa-camera"></span></a>
+                        </li>
+                        <li class="btn-action list-vertical">
+                            <a href=""><span class="fa fa-info"></span></a>
+                        </li>
+                    </ul>
+                </div>
+            </div><!--bar-right-outer-->
             <div id="bar-bottom">
             </div><!--bar-bottom-->
-            <div id="bar-left">
-            </div><!--bar-left-->
-        </div><!--bar-bottom-->
+            <div id="bar-left-outer" data-slider-bar bartype="left">
+                <div id="bar-left">
+                </div>
+            </div><!--bar-left-outer-->
+        </div><!--container-->
         <!--vendor-->
         <!--scripts-->
     </body>
