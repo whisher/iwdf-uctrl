@@ -8,10 +8,10 @@ function config($stateProvider) {
             		templateUrl: 'core/templates/index.html',
             		controller:'CoreController as core'
     		})
-                        .state('gmgrid', {
-                            url: '/gmgrid',
-                            templateUrl: 'core/templates/gmgrid.html',
-                            controller:'GmgridController as gmgrid'
+                        .state('explore', {
+                            url: '/explore',
+                            templateUrl: 'core/templates/explore.html',
+                            controller:'ExploreController as explore'
                         })
                         .state('search', {
                             url: '/search',

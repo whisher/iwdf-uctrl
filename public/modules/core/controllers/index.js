@@ -4,8 +4,8 @@
 function CoreController() {
 	var core = this;
 }
-function GmgridController() {
-  	var gmgrid = this;
+function ExploreController() {
+  	var explore = this;
 }
 function SearchController() {
   	var search = this;
@@ -37,7 +37,7 @@ function ScreenshotController($stateParams){
 }
 angular.module('core.controllers', [])
     .controller('CoreController', CoreController)
-     .controller('GmgridController',GmgridController)
+     .controller('ExploreController',ExploreController)
      .controller('SearchController',SearchController)
      .controller('WrenchController',WrenchController)
      .controller('SegretController',SegretController)

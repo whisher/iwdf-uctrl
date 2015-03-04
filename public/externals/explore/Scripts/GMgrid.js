@@ -1,4 +1,4 @@
-/*****
+﻿/*****
  **  GMgrid.js
  **  Griglia per Google Maps
  **  Author: Carlo Mezzanotte (carlo.mezzanotte@tidiemme.mi.it)
@@ -148,8 +148,8 @@ function MapsGrid(map, getData, callBack, dblClickCallback) {
 //        _midTime = Date.now();                        // timer
         if (data && !data.error) {
 
-            $(data.rows).each(function (index, row) {
-                _options.Y = row.y;
+            $(data).each(function (index, row) {
+                _options.Y = row.idY;
                 var boxRow = createRow(row);
                 _boxRows.push(boxRow);
             });
@@ -165,16 +165,18 @@ function MapsGrid(map, getData, callBack, dblClickCallback) {
     // aggiungo delle nuove righe
     function addRows(data) {
 //        _startTime = _midTime = Date.now();           // timer
+        if(_boxRows.length == 0) return;
 
-        if (_side == 'N') {             // aggiungo le righe sopra
+        if (_side == 'N') {
+              // aggiungo le righe sopra
             var lastRow = _boxRows.length - 1;
             var lastY = _boxRows[lastRow][0].Y;
             var minX = _boxRows[lastRow][0].getBounds().getSouthWest().lng();
             var maxX = _boxRows[lastRow][_boxRows[lastRow].length - 1].getBounds().getNorthEast().lng();
 
-            $(data.rows).each(function (index, row) {
-                if (row.y > lastY) {
-                    _options.Y = row.y;
+            $(data).each(function (index, row) {
+                if (row.idY > lastY) {
+                    _options.Y = row.idY;
                     var boxRow = createRow(row, minX, maxX);
                     _boxRows.push(boxRow);
                     minX = boxRow[0].getBounds().getSouthWest().lng();
@@ -183,14 +185,14 @@ function MapsGrid(map, getData, callBack, dblClickCallback) {
             });
         }
         else {                          // aggiungo le righe sotto
-            data.rows.reverse();
+            data.reverse();
             var lastY = _boxRows[0][0].Y;
             var minX = _boxRows[0][0].getBounds().getSouthWest().lng();
             var maxX = _boxRows[0][_boxRows[0].length - 1].getBounds().getNorthEast().lng();
 
-            $(data.rows).each(function (index, row) {
-                if (row.y < lastY) {
-                    _options.Y = row.y;
+            $(data).each(function (index, row) {
+                if (row.idY < lastY) {
+                    _options.Y = row.idY;
                     var boxRow = createRow(row, minX, maxX);
                     _boxRows.unshift(boxRow);
                     minX = boxRow[0].getBounds().getSouthWest().lng();
@@ -226,9 +228,9 @@ function MapsGrid(map, getData, callBack, dblClickCallback) {
     function createRow(row, minX, maxX) {
         var boxRow = new Array();
 
-        $(row.elements).each(function (index, elem) {
+        $(row.cubes).each(function (index, elem) {
             var deltaX;
-            deltaX = (elem.long2 - elem.long) / 3.0;
+            deltaX = (elem.longitudeEast - elem.longitudeWest) / 3.0;
         //   if ((minX == null || minX <= (elem.long2 - deltaX)) && (maxX == null || maxX >= (elem.long + deltaX))) {
                 var box = createBox(row, elem);
                 boxRow.push(box);
@@ -241,17 +243,17 @@ function MapsGrid(map, getData, callBack, dblClickCallback) {
 
     // creo un singolo riquadro
     function createBox(row, elem) {
-        _options.X = elem.x;
-        _options.fillColor = elem.color;
+        _options.X = elem.idX;
+        _options.fillColor = elem.color || "#2C70AF";
         _options.bounds = new google.maps.LatLngBounds(
-            new google.maps.LatLng(row.lat, elem.long),
-            new google.maps.LatLng(row.lat2, elem.long2));
+            new google.maps.LatLng(row.latitudeSouth, elem.longitudeWest),
+            new google.maps.LatLng(row.latitudeNorth, elem.longitudeEast));
 
         var box = new google.maps.Rectangle(_options);
-        box.lat = parseFloat(row.lat);
-        box.lat2 = parseFloat(row.lat2);
-        box.long = parseFloat(elem.long);
-        box.long2 = parseFloat(elem.long2);
+        box.lat = parseFloat(row.latitudeSouth);
+        box.lat2 = parseFloat(row.latitudeNorth);
+        box.long = parseFloat(elem.longitudeWest);
+        box.long2 = parseFloat(elem.longitudeEast);
         google.maps.event.addListener(box, 'click', boxClicked);
         google.maps.event.addListener(box, 'dblclick', _dblClickCallback);
 
@@ -264,20 +266,20 @@ function MapsGrid(map, getData, callBack, dblClickCallback) {
 
         var minY = _boxRows[0][0].Y;
         var boxIx = dataIx = 0;
-        while (data.rows[dataIx].y > _boxRows[boxIx][0].Y) {
+        while (data[dataIx].idY > _boxRows[boxIx][0].Y) {
             boxIx++;
         }
 
-        while (dataIx < data.rows.length && boxIx < _boxRows.length) {
-            if (data.rows[dataIx].y < _boxRows[boxIx][0].Y) {
+        while (dataIx < data.length && boxIx < _boxRows.length) {
+            if (data[dataIx].idY < _boxRows[boxIx][0].Y) {
                 dataIx++;
                 continue;
             }
-            _options.Y = data.rows[dataIx].y;
+            _options.Y = data[dataIx].idY;
             if (_side == 'E')              // aggiungo le celle a destra
-                addElems(data.rows[dataIx], _boxRows[boxIx]);
+                addElems(data[dataIx], _boxRows[boxIx]);
             else
-                insertElems(data.rows[dataIx], _boxRows[boxIx]);
+                insertElems(data[dataIx], _boxRows[boxIx]);
             dataIx++;
             boxIx++;
         }
@@ -294,8 +296,8 @@ function MapsGrid(map, getData, callBack, dblClickCallback) {
     // aggiungo dei riquadri alla fine di una riga
     function addElems(row, boxRow) {
         var lastX = boxRow[boxRow.length - 1].X;
-        $(row.elements).each(function (index, elem) {
-            if (elem.x > lastX) {
+        $(row.cubes).each(function (index, elem) {
+            if (elem.idX > lastX) {
                 var box = createBox(row, elem);
                 boxRow.push(box);
             }
@@ -304,10 +306,10 @@ function MapsGrid(map, getData, callBack, dblClickCallback) {
 
     // inserisco dei riquadri all'inizio di una riga
     function insertElems(row, boxRow) {
-        row.elements.reverse();
+        row.cubes.reverse();
         var lastX = boxRow[0].X;
-        $(row.elements).each(function (index, elem) {
-            if (elem.x < lastX) {
+        $(row.cubes).each(function (index, elem) {
+            if (elem.idX < lastX) {
                 var box = createBox(row, elem);
                 boxRow.unshift(box);
             }
@@ -405,7 +407,7 @@ function MapsGrid(map, getData, callBack, dblClickCallback) {
      Math.round((data) ? data.elapsed * 1000.0 : 0.0) + ") | Delete: " +
      Math.round(_midTime - _startTime) + " | Draw: " +
      Math.round(_endTime - _midTime) + " | Rows: " +
-     ((data) ? data.rows.length : 0) + " | Columns: " + ((data) ? data.rows[0].elements.length : 0));
+     ((data) ? data.rows.length : 0) + " | Columns: " + ((data) ? data.[0].cubes.length : 0));
      };
      */
     // rispondo al click su un riquadro
@@ -439,7 +441,7 @@ function MapsGrid(map, getData, callBack, dblClickCallback) {
             $(boxCols).each(function () {
                 this.setMap(null);
                 google.maps.event.clearListeners(this, 'click');
-            })
+            });
             this.length = 0;
         });
 
@@ -460,6 +462,24 @@ function MapsGrid(map, getData, callBack, dblClickCallback) {
                 })
             });
             _visible = show;
+        }
+
+
+        if(show && _gridVisible)
+        {
+            setTutorialStep(TUTORIAL_STEP_MAPS_GRID);
+        }
+        else
+        {
+            if(_gridVisible)
+            {
+                setTutorialStep(TUTORIAL_STEP_MAPS_GENERAL);
+            }
+            else
+            {
+               // setTutorialStep(TUTORIAL);
+            }
+           //
         }
     }
 

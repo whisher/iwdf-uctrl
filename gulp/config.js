@@ -17,12 +17,10 @@ var config = {
             styles: SRC_FOLDER + '/styles/*.scss',
             scripts: [
                 TMP_FOLDER + '/templates/templates.js',
-                SRC_FOLDER + '/modules/**/*.js',
-                '!'+SRC_FOLDER + '/modules/gmgrid/**'
+                SRC_FOLDER + '/modules/**/*.js'
             ],
-            gmgrid:[
-                SRC_FOLDER + '/modules/gmgrid/**'
-            ],
+            externals:SRC_FOLDER + '/externals/**',
+            externalsBase:SRC_FOLDER + '/externals',
             vendor:[
                 'bower_components/jquery/dist/jquery.min.js',
                 'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.min.js',
@@ -63,7 +61,7 @@ var config = {
                 scripts: BUILD_FOLDER + '/scripts',
                 fonts: BUILD_FOLDER + '/fonts',
                 images: BUILD_FOLDER + '/images',
-                gmgrid:BUILD_FOLDER + '/modules/gmgrid'
+                externals:BUILD_FOLDER + '/externals'
             },
             dist: {
                 index: RELEASE_FOLDER,
@@ -71,7 +69,7 @@ var config = {
                 scripts: RELEASE_FOLDER + '/scripts',
                 fonts: RELEASE_FOLDER + '/fonts',
                 images: RELEASE_FOLDER + '/images',
-                gmgrid:RELEASE_FOLDER + '/modules/gmgrid'
+                externals:RELEASE_FOLDER + '/externals'
             }
         }
     },

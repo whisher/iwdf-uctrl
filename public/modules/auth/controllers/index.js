@@ -7,6 +7,7 @@ function SigninModalController($rootScope, $modalInstance,  Auth) {
     auth.signin = function () {
         Auth.signin(auth.data)
             .then(function(response) {
+                $rootScope.global.isModalOpen  = false;
                 $modalInstance.close(response.data);
             })
             .catch(function(response) {alert(response.data);
@@ -16,6 +17,7 @@ function SigninModalController($rootScope, $modalInstance,  Auth) {
     auth.register = function () {
         Auth.register(auth.data)
             .then(function(response) {
+                $rootScope.global.isModalOpen  = false;
                 $modalInstance.close(response.data);
             })
             .catch(function(response) {
