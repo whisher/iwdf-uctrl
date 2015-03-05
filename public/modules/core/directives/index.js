@@ -94,15 +94,23 @@ function sliderBar() {
         bartype: '@'
     },
     link: function(scope, element) {
+        
         var barRightOuter = angular.element(document.getElementById('bar-right-outer'));
         var barLeftOuter = angular.element(document.getElementById('bar-left-outer'));
         element.on('mouseenter',function(e){
-            barRightOuter.addClass('right-slider');
-            barLeftOuter.addClass('left-slider');
+            var infoSliderShow = angular.element(document.getElementsByClassName('info-slider-show'));
+            if(!infoSliderShow.length){
+                barRightOuter.addClass('right-slider');
+                barLeftOuter.addClass('left-slider');
+            }
+            
         });
         element.on('mouseleave',function(e){
-            barRightOuter.removeClass('right-slider');
-            barLeftOuter.removeClass('left-slider');
+            var infoSliderShow = angular.element(document.getElementsByClassName('info-slider-show'));
+            if(!infoSliderShow.length){
+                barRightOuter.removeClass('right-slider');
+                barLeftOuter.removeClass('left-slider');
+            }
         });
         scope.$on('$destroy', function() {
             element.off('mouseenter');
