@@ -6,3 +6,26 @@
 .animated-element.ng-enter.ng-enter-active{
   opacity: 1;
 }
+.info-slider{
+	position:absolute;
+	width:300px;
+	background-color:#727272;	
+	top:0;
+	bottom:0;
+            -moz-transition: right .5s;
+            -webkit-transition: right .5s;
+            -o-transition: right .5s;
+	transition: right .5s;
+            right:-300px;
+            z-index:1000;
+            color:#fff;
+}
+.info-slider.info-slider-show{
+	display:block;	
+	 -moz-transition: right 1s;
+             -webkit-transition: right 1s;
+             -o-transition: right 1s;
+            transition: right 1s;
+            right:0;
+	
+}

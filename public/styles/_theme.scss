@@ -38,9 +38,11 @@ ul,li{
 }
 #bar-top{
   top:-50px;
+  z-index:9999;
 }
 #bar-bottom{
   bottom:-50px;
+  z-index:9998;
 }
 #bar-left,#bar-right{
   top:0;
@@ -55,6 +57,7 @@ ul,li{
   top:0;
   bottom:0;
   width:50px;
+   z-index:9997;
 }
 #bar-right-outer,#bar-left-outer{
   background-color:trasparent;
@@ -62,10 +65,10 @@ ul,li{
 #bar-right-outer{
   right:0px;
   #bar-right{
-    -moz-transition: right .1s;
-    -webkit-transition: right .1s;
-    -o-transition: right .1s;
-    transition: right .1s;
+    -moz-transition: right .5s;
+    -webkit-transition: right .5s;
+    -o-transition: right .5s;
+    transition: right .5s;
     right:-50px;
   }
 }
@@ -82,10 +85,10 @@ ul,li{
 #bar-left-outer{
   left:0px;
   #bar-left{
-    -moz-transition: left .1s;
-    -webkit-transition: left .1s;
-    -o-transition: left .1s;
-    transition: left .1s;
+    -moz-transition: left .5s;
+    -webkit-transition: left .5s;
+    -o-transition: left .5s;
+    transition: left .5s;
     left:-50px;
   }
 }
