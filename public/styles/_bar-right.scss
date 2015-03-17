@@ -3,7 +3,7 @@ li.list-vertical{
 }
 li.btn-action.active{
     a{
-        color: #9E9E9E;
+        color: #FFCE32;
     }
 }
 li.btn-action{
@@ -18,5 +18,10 @@ li.btn-action{
         text-align: center;
         cursor:pointer;
         text-indent: 2px;
+    }
+}
+li.stop-slider-bar-active{
+    a {
+       background-color:#F94E00; 
     }
 }

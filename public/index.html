@@ -14,6 +14,9 @@
     <body class="overlay" ng-cloak>
         <div id="container">
             <div id="content" ui-view class="animated-element"></div>
+            <div id="show-active-tab" data-ng-if="global.currentTabIcon">
+               <h3 style="color:#fff;text-align:center;"> {{global.currentTabIcon}} </h3>
+            </div>
             <div id="bar-top">
                 <div class="row row-top">
                     <div class="col-md-4">
@@ -42,7 +45,7 @@
             </div><!--bar-top-->
             <div id="bar-right-outer" data-slider-bar bartype="right">
                 <div id="bar-right">
-                    <ul class="list-unstyled" data-ng-if="global.isAuthenticated">
+                    <ul class="list-unstyled" data-ng-if="!global.isAuthenticated">
                         <li ui-sref-active="active" class="btn-action list-vertical">
                             <a data-ui-sref="explore"><span class="fa fa-globe"></span></a>
                         </li>
@@ -58,17 +61,22 @@
                         <li class="btn-action list-vertical" data-ng-controller="CameraController as camera">
                             <a href="" data-ng-click="camera.screenShot()"><span class="fa fa-camera"></span></a>
                         </li>
-            <li class="btn-action list-vertical" data-page-slider data-classname="info-slider">
+                        <li class="btn-action list-vertical" data-page-slider data-classname="info-slider">
                             <a href=""><span class="fa fa-info"></span></a>
                         </li>
                     </ul>
-                </div>
+                </div><!--bar-right-->
             </div><!--bar-right-outer-->
             <div id="bar-bottom">
             </div><!--bar-bottom-->
             <div id="bar-left-outer" data-slider-bar bartype="left">
                 <div id="bar-left">
-                </div>
+                    <ul class="list-unstyled" data-ng-if="!global.isAuthenticated">
+                        <li class="btn-action list-vertical" data-switcher-bar>
+                                <a href=""><span class="fa fa-barcode"></span></a>
+                        </li>
+                    </ul>
+                </div><!--bar-left-->
             </div><!--bar-left-outer-->
         </div><!--container-->
         <!--vendor-->

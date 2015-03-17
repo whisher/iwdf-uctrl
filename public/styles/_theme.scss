@@ -102,5 +102,16 @@ ul,li{
     left:0;
   }
 }
-
+#show-active-tab{
+  display:none;
+ @media screen and (min-width: $break-large) {
+    display:block;
+    width:150px;
+    height:150px;
+    background-color:#0B5AA1;
+    position:absolute;  
+    top:0;
+    left:5%;
+  }
+}
 

@@ -94,20 +94,21 @@ function sliderBar() {
         bartype: '@'
     },
     link: function(scope, element) {
-        
+        var container = angular.element(document.getElementById('container'));
         var barRightOuter = angular.element(document.getElementById('bar-right-outer'));
         var barLeftOuter = angular.element(document.getElementById('bar-left-outer'));
-        element.on('mouseenter',function(e){
+        element.on('mouseenter',function(e){ 
             var infoSliderShow = angular.element(document.getElementsByClassName('info-slider-show'));
+            var hasClass = container.hasClass('stop-slider-bar');
             if(!infoSliderShow.length){
                 barRightOuter.addClass('right-slider');
                 barLeftOuter.addClass('left-slider');
             }
-            
         });
         element.on('mouseleave',function(e){
             var infoSliderShow = angular.element(document.getElementsByClassName('info-slider-show'));
-            if(!infoSliderShow.length){
+            var hasClass = container.hasClass('stop-slider-bar');
+            if(!infoSliderShow.length && !hasClass){
                 barRightOuter.removeClass('right-slider');
                 barLeftOuter.removeClass('left-slider');
             }
@@ -119,12 +120,25 @@ function sliderBar() {
     }
   };
 }
-
+function switcherBar(){
+    return {
+        restrict: 'AE',
+        link: function(scope, element) {
+            var container = angular.element(document.getElementById('container'));
+            element.on('click',function(e){
+                e.preventDefault();
+                container.toggleClass('stop-slider-bar');
+                element.toggleClass('stop-slider-bar-active');
+            });
+        }
+  };
+}
 angular.module('core.directives', [])
     .directive('showVersion', showVersion)
     .directive('userFeedback', userFeedback)
     .directive('showErrors', showErrors)
     .directive('pageSlider', pageSlider)
-     .directive('sliderBar', sliderBar);
+    .directive('sliderBar', sliderBar)
+    .directive('switcherBar', switcherBar);
 })();
 
