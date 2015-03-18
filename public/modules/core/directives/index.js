@@ -120,15 +120,27 @@ function sliderBar() {
     }
   };
 }
-function switcherBar(){
+function fixedBar(){
     return {
         restrict: 'AE',
         link: function(scope, element) {
+            var toggled = false;
             var container = angular.element(document.getElementById('container'));
+            var span = element.find('span');
+            console.log(span);
             element.on('click',function(e){
                 e.preventDefault();
                 container.toggleClass('stop-slider-bar');
-                element.toggleClass('stop-slider-bar-active');
+                if(!toggled){
+                   span.removeClass('icon-bar');
+                   span.addClass('icon-bar_fixed');
+                   toggled = true;
+                }
+                else{
+                    span.removeClass('icon-bar_fixed');
+                    span.addClass('icon-bar');
+                    toggled = false;
+                }
             });
         }
   };
@@ -139,6 +151,6 @@ angular.module('core.directives', [])
     .directive('showErrors', showErrors)
     .directive('pageSlider', pageSlider)
     .directive('sliderBar', sliderBar)
-    .directive('switcherBar', switcherBar);
+    .directive('fixedBar', fixedBar);
 })();
 

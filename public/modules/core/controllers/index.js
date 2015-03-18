@@ -7,11 +7,20 @@ function CoreController() {
 function ExploreController() {
   	var explore = this;
 }
-function SearchController() {
-  	var search = this;
-}
 function WrenchController() {
-  	var wrench = this;
+    var wrench = this;
+}
+function TutorialController() {
+  	var tutorial = this;
+}
+function SupportController() {
+    var support = this;
+}
+function StoreController() {
+    var store = this;
+}
+function DevelopersController() {
+    var developers = this;
 }
 function SegretController(){
 	var segret = this;
@@ -37,10 +46,13 @@ function ScreenshotController($stateParams){
 }
 angular.module('core.controllers', [])
     .controller('CoreController', CoreController)
-     .controller('ExploreController',ExploreController)
-     .controller('SearchController',SearchController)
-     .controller('WrenchController',WrenchController)
-     .controller('SegretController',SegretController)
-     .controller('CameraController',CameraController)
-      .controller('ScreenshotController',ScreenshotController);
+    .controller('ExploreController',ExploreController)
+    .controller('WrenchController',WrenchController)
+    .controller('TutorialController',TutorialController)
+    .controller('SupportController',SupportController)
+    .controller('StoreController',StoreController)
+    .controller('DevelopersController',DevelopersController)
+    .controller('SegretController',SegretController)
+    .controller('CameraController',CameraController)
+    .controller('ScreenshotController',ScreenshotController);
 })();

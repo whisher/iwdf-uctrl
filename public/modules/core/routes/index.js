@@ -8,7 +8,7 @@ function config($stateProvider) {
             templateUrl: 'core/templates/index.html',
             controller:'CoreController as core',
             data: {
-                currentTabIcon: 'Home'
+                currentTabIcon: 'store'
             } 
         })
         .state('explore', {
@@ -19,20 +19,52 @@ function config($stateProvider) {
                 currentTabIcon: false
             } 
         })
-        .state('search', {
-            url: '/search',
-            templateUrl: 'core/templates/search.html',
-            controller:'SearchController as search',
-            data: {
-                currentTabIcon: 'Search'
-            } 
-        })
         .state('wrench', {
             url: '/wrench',
             templateUrl: 'core/templates/wrench.html',
             controller:'WrenchController as wrench',
             data: {
-                currentTabIcon: 'Wrench'
+                currentTabIcon: 'wrench'
+            } 
+        })
+        .state('tutorial', {
+            url: '/tutorial',
+            templateUrl: 'core/templates/tutorial.html',
+            controller:'TutorialController as tutorial',
+            data: {
+                currentTabIcon: 'tutorial'
+            } 
+        })
+        .state('support', {
+            url: '/support',
+            templateUrl: 'core/templates/support.html',
+            controller:'SupportController as support',
+            data: {
+                currentTabIcon: 'support'
+            } 
+        })
+        .state('store', {
+            url: '/store',
+            templateUrl: 'core/templates/store.html',
+            controller:'StoreController as store',
+            data: {
+                currentTabIcon: 'store'
+            } 
+        })
+        .state('developers', {
+            url: '/developers',
+            templateUrl: 'core/templates/developers.html',
+            controller:'DevelopersController as developers',
+            data: {
+                currentTabIcon: 'developers'
+            } 
+        })
+        .state('screenshot', {
+            url: '/screenshot/:id',
+            templateUrl: 'core/templates/screenshot.html',
+            controller:'ScreenshotController as screenshot',
+            data: {
+                currentTabIcon: 'screenshot'
             } 
         })
         .state('segret', {
@@ -41,14 +73,6 @@ function config($stateProvider) {
             controller:'SegretController as segret',
             data: {
                 currentTabIcon: 'Segret'
-            } 
-        })
-        .state('screenshot', {
-            url: '/screenshot/:id',
-            templateUrl: 'core/templates/screenshot.html',
-            controller:'ScreenshotController as screenshot',
-            data: {
-                currentTabIcon: 'Screenshot'
             } 
         })
         .state('404', {

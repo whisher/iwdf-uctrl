@@ -16,6 +16,7 @@
             <div id="content" ui-view class="animated-element"></div>
             <div id="show-active-tab" data-ng-if="global.currentTabIcon">
                <h3 style="color:#fff;text-align:center;"> {{global.currentTabIcon}} </h3>
+               <div><span class="icon-display icon-{{global.currentTabIcon}}"  /></span></div>
             </div>
             <div id="bar-top">
                 <div class="row row-top">
@@ -47,23 +48,41 @@
                 <div id="bar-right">
                     <ul class="list-unstyled" data-ng-if="!global.isAuthenticated">
                         <li ui-sref-active="active" class="btn-action list-vertical">
-                            <a data-ui-sref="explore"><span class="fa fa-globe"></span></a>
+                            <a data-ui-sref="explore">
+                                <span class="icon-display icon-world" /></span>
+                            </a>
                         </li>
                         <li ui-sref-active="active" class="btn-action list-vertical">
-                            <a data-ui-sref="wrench"><span class="fa fa-wrench"></span></a>
+                            <a data-ui-sref="wrench">
+                                <span class="icon-display icon-wrench" /></span>
+                            </a>
                         </li>
                         <li ui-sref-active="active" class="btn-action list-vertical">
-                            <a data-ui-sref="search"><span class="fa fa-search"></span></a>
+                            <a data-ui-sref="tutorial">
+                                <span class="icon-display icon-tutorial" /></span>
+                            </a>
                         </li>
                         <li ui-sref-active="active" class="btn-action list-vertical">
-                            <a data-ui-sref="segret"><span class="fa fa-eye"></span></a>
+                            <a data-ui-sref="support">
+                                <span class="icon-display icon-support" /></span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active" class="btn-action list-vertical">
+                            <a data-ui-sref="store">
+                                <span class="icon-display icon-store" /></span>
+                            </a>
+                        </li>
+                        <li ui-sref-active="active" class="btn-action list-vertical">
+                            <a data-ui-sref="developers">
+                                <span class="icon-display icon-developers" /></span>
+                            </a>
                         </li>
                         <li class="btn-action list-vertical" data-ng-controller="CameraController as camera">
-                            <a href="" data-ng-click="camera.screenShot()"><span class="fa fa-camera"></span></a>
+                            <a href="" data-ng-click="camera.screenShot()">
+                                <span class="icon-display icon-screenshot" /></span>
+                            </a>
                         </li>
-                        <li class="btn-action list-vertical" data-page-slider data-classname="info-slider">
-                            <a href=""><span class="fa fa-info"></span></a>
-                        </li>
+                        
                     </ul>
                 </div><!--bar-right-->
             </div><!--bar-right-outer-->
@@ -72,8 +91,10 @@
             <div id="bar-left-outer" data-slider-bar bartype="left">
                 <div id="bar-left">
                     <ul class="list-unstyled" data-ng-if="!global.isAuthenticated">
-                        <li class="btn-action list-vertical" data-switcher-bar>
-                                <a href=""><span class="fa fa-barcode"></span></a>
+                        <li class="btn-action list-vertical" data-fixed-bar>
+                                <a href="">
+                                    <span class="icon-display icon-bar" /></span>
+                                </a>
                         </li>
                     </ul>
                 </div><!--bar-left-->
