@@ -38,11 +38,11 @@ ul,li{
 }
 #bar-top{
   top:-50px;
-  z-index:9999;
+ /* z-index:9999;*/
 }
 #bar-bottom{
   bottom:-50px;
-  z-index:9998;
+ /* z-index:9998;*/
 }
 #bar-left,#bar-right{
   top:0;

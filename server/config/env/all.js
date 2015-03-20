@@ -21,15 +21,15 @@ module.exports = {
       cert: ''
     }
   },
-  hostname: process.env.HOST || process.env.HOSTNAME,
+  hostname: process.env.HOST || process.env.HOSTNAME || 'localhost',
   db: process.env.MONGOHQ_URL,
   templateEngine: 'ejs',
 
 
   // The secret should be set to a non-guessable string that
   // is used to compute a session hash
-  apiSecret: 'Angular-Express',
-  sessionSecret: 'Angular-Express',
+  apiSecret: 'version01#www.viewtwoo.com#2015',
+  sessionSecret: 'version01#www.viewtwoo.com#2015',
   // Time Expiration token
   expiresInMinutes: 60*5,
   // The name of the MongoDB collection to store sessions in

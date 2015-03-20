@@ -12,13 +12,22 @@ function config($locationProvider, $urlRouterProvider, $logProvider, $httpProvid
     $httpProvider.useApplyAsync(true);
 }
 
-function run($log) {
-    $log.debug('App is running!');
-}
-
-angular.module('app', ['ngAnimate','core','auth','users'])
-	    .config(config)
-	    .run(run);
+angular.module(
+	'app', 
+	[
+		'ngAnimate',
+		'core',
+		'auth',
+		'users',
+		'world',
+		'wrench',
+		'tutorial',
+		'support',
+		'store',
+		'developers',
+		'screenshot'
+	])
+	.config(config);
  })();
 
 

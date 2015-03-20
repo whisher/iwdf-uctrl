@@ -127,7 +127,6 @@ function fixedBar(){
             var toggled = false;
             var container = angular.element(document.getElementById('container'));
             var span = element.find('span');
-            console.log(span);
             element.on('click',function(e){
                 e.preventDefault();
                 container.toggleClass('stop-slider-bar');
@@ -141,6 +140,9 @@ function fixedBar(){
                     span.addClass('icon-bar');
                     toggled = false;
                 }
+            });
+            scope.$on('$destroy', function() {
+                    element.off('click');
             });
         }
   };
