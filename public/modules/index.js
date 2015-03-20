@@ -15,8 +15,8 @@ function config($locationProvider, $urlRouterProvider, $logProvider, $httpProvid
 angular.module(
 	'app', 
 	[
-		'ngAnimate',
 		'core',
+		'i18n',
 		'auth',
 		'users',
 		'world',

@@ -9,14 +9,14 @@ module.exports = gulp.task('default', function() {
                 'clean',
                 ['index', 'styles', 'fonts', 'assets','images', 'templates'],
                 ['hint'],
-                ['vendor','scripts','externals']
+                ['vendor','scripts','i18n','externals']
                );
     } else {
         runSequence(
                 'clean',
                ['index', 'styles', 'fonts', 'assets', 'images', 'templates'],
                 ['hint'],
-                ['vendor','scripts','externals'],
+                ['vendor','scripts','i18n','externals'],
                 'watch'
        );
     }

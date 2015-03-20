@@ -15,6 +15,9 @@ module.exports = gulp.task('index', function () {
       replace('<!--vendor-->', '<script src="scripts/' + config.filenames.vendor + '"></script>')
     )
     .pipe(
+      replace('<!--i18n-->', '<script src="scripts/i18n/angular-locale_' + config.filenames.i18n + '.js"></script>')
+    )
+    .pipe(
       replace('<!--scripts-->', '<script src="scripts/' + config.filenames.scripts + '"></script>')
     )
     .pipe(gulpif(release,

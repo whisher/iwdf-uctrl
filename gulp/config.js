@@ -30,12 +30,15 @@ var config = {
                 'bower_components/angular-bootstrap/ui-bootstrap-tpls'+jsExt,
                 'bower_components/angular-animate/angular-animate'+jsExt,
                 'bower_components/ngstorage/ngStorage'+jsExt,
-                'bower_components/angular-jwt/dist/angular-jwt'+jsExt
+                'bower_components/angular-jwt/dist/angular-jwt'+jsExt,
+                 'bower_components/angular-dynamic-locale/dist/tmhDynamicLocale.js',
+                'bower_components/angular-translate/angular-translate'+jsExt
             ],
             fonts: [
                 'bower_components/bootstrap-sass-official/assets/fonts/bootstrap/**',
                 'bower_components/fontawesome/fonts/**'
             ],
+            i18n:'bower_components/angular-i18n/*.js',
             assets: [
                 SRC_FOLDER + '/favicon.png',
                 SRC_FOLDER + '/humans.txt',
@@ -61,7 +64,8 @@ var config = {
                 scripts: BUILD_FOLDER + '/scripts',
                 fonts: BUILD_FOLDER + '/fonts',
                 images: BUILD_FOLDER + '/images',
-                externals:BUILD_FOLDER + '/externals'
+                externals:BUILD_FOLDER + '/externals',
+                i18n: BUILD_FOLDER + '/scripts/i18n',
             },
             dist: {
                 index: RELEASE_FOLDER,
@@ -69,14 +73,16 @@ var config = {
                 scripts: RELEASE_FOLDER + '/scripts',
                 fonts: RELEASE_FOLDER + '/fonts',
                 images: RELEASE_FOLDER + '/images',
-                externals:RELEASE_FOLDER + '/externals'
+                externals:RELEASE_FOLDER + '/externals',
+                i18n:RELEASE_FOLDER + '/scripts/i18n'
             }
         }
     },
     filenames:{ 
         styles: 'bundle.css',
         vendor: 'vendor.js',
-        scripts: 'scripts.js'
+        scripts: 'scripts.js',
+        i18n: 'it-it'
     }
 };
 

@@ -2,7 +2,7 @@
 'use strict';
 
 function run($window, $rootScope, $state, jwtHelper, signinModal, HAS_MODAL_LOGIN, UserTokenStorage, Auth) {
-  $rootScope.global  = {};
+  
   $rootScope.global.isModalOpen  = false;
   $rootScope.global.errors = [];
 
