@@ -37,10 +37,10 @@ exports.isMongoId = function(req, res, next) {
 };
 
 /**
-* Article authorization 
+* Support authorization 
 */
 exports.isOwner = function(req, res, next) {
-  if (!req.user.hasAdminRole && req.article.user.id !== req.user.id) {
+  if (!req.user.hasAdminRole && req.support.user.id !== req.user.id) {
     return res.sendStatus(401);
   }
   next();

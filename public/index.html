@@ -45,9 +45,9 @@
                     </div>
                 </div><!--row-top-->
             </div><!--bar-top-->
-            <div id="bar-right-outer" data-slider-bar bartype="right">
+            <div id="bar-right-outer" data-slider-bar bartype="right" data-ng-if="global.isAuthenticated">
                 <div id="bar-right">
-                    <ul class="list-unstyled" data-ng-if="!global.isAuthenticated">
+                    <ul class="list-unstyled">
                         <li ui-sref-active="active" class="btn-action list-vertical">
                             <a data-ui-sref="world">
                                 <span class="icon-display icon-world" /></span>
@@ -64,7 +64,10 @@
                             </a>
                         </li>
                         <li ui-sref-active="active" class="btn-action list-vertical">
-                            <a data-ui-sref="support">
+<a data-ui-sref="auth.support_user({userId:global.isAuthenticated.id})" data-ng-if="!global.isAuthenticated.hasAdminRole">
+                                <span class="icon-display icon-support" /></span>
+                            </a>
+                            <a data-ui-sref="auth.support" data-ng-if="global.isAuthenticated.hasAdminRole">
                                 <span class="icon-display icon-support" /></span>
                             </a>
                         </li>
@@ -89,9 +92,9 @@
             </div><!--bar-right-outer-->
             <div id="bar-bottom">
             </div><!--bar-bottom-->
-            <div id="bar-left-outer" data-slider-bar bartype="left">
+            <div id="bar-left-outer" data-slider-bar bartype="left" data-ng-if="global.isAuthenticated">
                 <div id="bar-left">
-                    <ul class="list-unstyled" data-ng-if="!global.isAuthenticated">
+                    <ul class="list-unstyled">
                         <li class="btn-action list-vertical" data-fixed-bar>
                                 <a href="">
                                     <span class="icon-display icon-bar" /></span>
@@ -101,6 +104,10 @@
                 </div><!--bar-left-->
             </div><!--bar-left-outer-->
         </div><!--container-->
+        <script src="/socket.io/socket.io.js"></script>
+        <script>
+  
+</script>
         <!--vendor-->
         <!--scripts-->
     </body>

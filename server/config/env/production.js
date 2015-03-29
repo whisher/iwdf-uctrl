@@ -1,7 +1,7 @@
 'use strict';
 var db = process.env.MONGOLAB_URI ||
     process.env.MONGOHQ_URL ||
-    'mongodb://localhost/angular-expresso-chat-prod';
+    'mongodb://localhost/viewtwoo-com-prod';
 module.exports = {
   db: db,
   /**

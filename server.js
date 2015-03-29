@@ -11,8 +11,8 @@ var fs = require('fs'),
 	path = require('path'),
 	passport = require('passport'),
 	errorHandler = require('errorhandler'),
-	/*sio = require('socket.io'),*/
-	/*socketio_jwt = require('socketio-jwt'),*/
+	sio = require('socket.io'),
+	socketio_jwt = require('socketio-jwt'),
 	configs = require('./server/config/config'),
 	auth = require('./server/middlewares/auth'),
 	jwt = require('./server/middlewares/jwt')(configs);
@@ -44,27 +44,11 @@ app.use(favicon(path.join(configs.rootPath,configs.releasePath,'favicon.png')));
 app.use(express.static( path.join(configs.rootPath, configs.releasePath)));
 app.use('/screenshots',express.static(path.join(configs.rootPath, 'screenshots')));
 
-/*
-var router = express.Router();
-
-router.use(function(req, res, next) {
-	res.header('Access-Control-Allow-Origin', '*');
-    	res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-    	res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
-            // intercept OPTIONS method
-	if ('OPTIONS' == req.method) {
-	      return res.sendStatus(200);
-	}
-   	next();
-});
-app.use('/api', router);
-*/
 // Routes
 require(configs.serverPath+'/routers/index')(app, configs, jwt);
 require(configs.serverPath+'/routers/auth')(app, auth, configs, jwt, passport);
 require(configs.serverPath+'/routers/users')(app, auth);
-
-
+require(configs.serverPath+'/routers/support')(app, auth, jwt);
 
 app.use(function(err, req, res, next) {
 	// If the error object doesn't exists
@@ -97,14 +81,16 @@ if (app.get('env') === 'development') {
 	app.use(errorHandler());
 }
 var server = http.createServer(app);
-//var io = sio(server);
+var io = sio(server);
 
-/*io.use(socketio_jwt.authorize({
-  secret: configs.apiSecret,
-  handshake: true
-}));*/
-
-//io.on('connection', require(configs.serverPath+'/routers/chat')(io));
+var supportNs = io.of('/support');
+supportNs.use(
+	socketio_jwt.authorize({
+  		secret: configs.apiSecret,
+  		handshake: true
+	})
+);
+supportNs.on('connection', require(configs.serverPath+'/routers/support.socket')(supportNs));
 
 server.listen(app.get('port'), function () {
 	console.log( 'Express started on http://'  + configs.hostname + ':' +

@@ -1,13 +1,52 @@
-<div class="page">
-<div class="container">
-   <div class="jumbotron">
-          <h1>Support</h1>
-          <h2>Test Test Test support</h2>
-          <h>Marketing stuff!</h1>
-        <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet.</p>
-        <p><a class="btn btn-lg btn-success" href="#" role="button">Get started today</a></p>
-   </div>
-</div>
-</div>    
+<div class="support">
+	<div class="container"  data-ng-if="!support.hasSupport">
+		<div class="row">
+	      		<div class="well">
+	          			<h5 class="text-center">There is no support on hold</h5>
+	      		</div>
+	  	</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="support__users">
+					<ul class="support__listGroup">
+			  			<li class="support__listGroupItem" data-ng-repeat="(userId,message) in support.messages track by message._id" data-ng-class="{ 'active' : (userId===support.showUserId), 
+			  			'userupdate' : !!support.userUpdate[userId]}" ng-click="support.show(userId)">
+			  			<span class="support__badge" data-ng-class="{'online':!!support.usersOnLine[userId]}">
+							<span class="fa fa-circle"></span>
+						</span>
+			  				{{message.user.username}}
+			  			</li>
+		  			</ul>
+				</div >
+			</div>
+		  	<div class="col-md-8">
+		  		<div data-ng-repeat="message in support.message track by message._id" class="support__message">
+					<div class="support__clear">
+						<div class="support__{{message.type}}">
+							{{message.text}}
+						</div>
+					</div>
+				</div>
+				
+		  	</div >
+		  	
+		</div>	
+	</div>
+	<div class="support-user__bottom">
+		<div class="container" data-ng-if="support.hasSupport">
+			<form name="form" class="support__form" data-ng-submit="support.send()" novalidate>
+				<div class="support__formGroup form-no-required">
+					<div class="input-group">
+						<span class="input-group-addon fa fa-pencil"></span>
+						<input type="text" tabindex="1" name="message" placeholder="Type your message (at least two characters)" class="form-control input-lg"  autocomplete="off" data-ng-minlength="2" data-ng-maxlength="255" data-ng-model="support.data.text" />
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+  </div>
 
+  
   

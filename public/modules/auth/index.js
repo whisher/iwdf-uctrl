@@ -5,14 +5,18 @@ function run($window, $rootScope, $state, jwtHelper, signinModal, HAS_MODAL_LOGI
   
   $rootScope.global.isModalOpen  = false;
   $rootScope.global.errors = [];
-
-  $window.onbeforeunload = function(e){
+  var token = UserTokenStorage.get();
+  if(token){
+    token = jwtHelper.decodeToken(token);
+  }
+  $rootScope.global.isAuthenticated =  token;
+  /*$window.onbeforeunload = function(e){
     Auth.logout().then(function(response) {
       UserTokenStorage.del();
     })
     .catch(function(response) {
     });
-  };
+  };*/
   
   $rootScope.$on('auth-unauthorized', function(event, data) { 
     UserTokenStorage.del();
@@ -29,6 +33,7 @@ function run($window, $rootScope, $state, jwtHelper, signinModal, HAS_MODAL_LOGI
   $rootScope.$on('auth-is-authenticated', function(event, data) { 
     UserTokenStorage.set(data);
     $rootScope.global.isAuthenticated =  jwtHelper.decodeToken(UserTokenStorage.get());
+    
   });
 
   $rootScope.global.current = {};

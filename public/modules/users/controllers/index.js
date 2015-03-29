@@ -11,7 +11,7 @@ function UserSigninController($rootScope, $state, Users) {
     	user.save = function() {
     		Users.signin(user.data).then(function(response) {
 			$rootScope.$emit('auth-is-authenticated', response.data.token);
-			$state.go('chat');
+			$state.go('home');
 		})
 		.catch(function(response) {
 			user.errors = response.data;
@@ -26,7 +26,7 @@ function UserRegisterController($rootScope, $state, Users) {
 	user.save = function() {
 		Users.register(user.data).then(function(response) {
 			$rootScope.$emit('auth-is-authenticated', response.data.token);
-			$state.go('chat');
+			$state.go('home');
 		})
 		.catch(function(response) {
 			user.errors = response.data;

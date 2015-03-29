@@ -1,0 +1,40 @@
+<div class="support-user">
+	<div class="container">
+		<div class="support-user__header">
+			<div class="support-user__supportOnline">
+				<span class="support-user__badge" data-ng-class="{'online':supportUser.supportIsOnline}">
+					<span class="fa fa-circle"></span>
+				</span>
+			</div>
+			<img src="images/support-header.jpg">
+		</div>
+		<div class="support-user__messages">
+			<div class="support-user__clear">
+				<div class="support-user__reply">
+				{{supportUser.welcome}} 
+				</div>
+			</div>
+			<div data-ng-repeat="message in supportUser.messages track by message._id" class="support-user__message">
+			<div class="support-user__clear">
+				<div class="support-user__{{message.type}}">
+					{{message.text}}
+				</div>
+			</div>
+			</div>
+		</div>
+	</div>
+	<div class="support-user__bottom">
+		<div class="container">
+			<form name="form" class="support-user__form" data-ng-submit="supportUser.send()" novalidate>
+				<div class="support-user__formGroup form-no-required">
+					<div class="input-group">
+						<span class="input-group-addon fa fa-pencil"></span>
+						<input type="text" tabindex="1" name="message" placeholder="Type your message (at least two characters)" class="form-control input-lg"  autocomplete="off" data-ng-minlength="2" data-ng-maxlength="255" data-ng-model="supportUser.data.text" />
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+  </div>
+
+  

@@ -31,8 +31,9 @@ var config = {
                 'bower_components/angular-animate/angular-animate'+jsExt,
                 'bower_components/ngstorage/ngStorage'+jsExt,
                 'bower_components/angular-jwt/dist/angular-jwt'+jsExt,
-                 'bower_components/angular-dynamic-locale/dist/tmhDynamicLocale.js',
-                'bower_components/angular-translate/angular-translate'+jsExt
+                'bower_components/angular-dynamic-locale/dist/tmhDynamicLocale.js',
+                'bower_components/angular-translate/angular-translate'+jsExt,
+                'bower_components/angular-socket-io/socket'+jsExt
             ],
             fonts: [
                 'bower_components/bootstrap-sass-official/assets/fonts/bootstrap/**',

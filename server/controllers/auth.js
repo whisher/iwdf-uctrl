@@ -8,15 +8,7 @@ var mongoose = require('mongoose'),
       jwt = require('jsonwebtoken'),
 	utils = require('../utils/errors');
 
-/**
- * just logged route
- */
-exports.isjustlogged = function(req, res) {
-  if (req.isAuthenticated()) {
-    return res.sendStatus(403);
-  }
-  return res.sendStatus(200);
-};
+
 
 /**
  * just logged route
@@ -30,6 +22,9 @@ exports.hasValidToken = function(req, res) {
  */
 exports.signin = function(configs, passport) {
   return function(req, res,next) {
+    if (req.isAuthenticated()) {
+      req.logout();
+    }
     req.checkBody('email', 'You must enter a valid email address').isEmail();
     req.checkBody('password', 'Password must be between 8-20 characters long').len(8, 20);
     var errors = req.validationErrors();
@@ -62,7 +57,7 @@ exports.signin = function(configs, passport) {
 exports.register  = function(configs) {
   return function(req, res, next) {
     if (req.isAuthenticated()) {
-      return req.sendStatus(403);
+      req.logout();
     }
     req.checkBody('username', 'username must be between 3-10 characters long').len(3, 10);
     req.checkBody('email', 'You must enter a valid email address').isEmail();

@@ -10,7 +10,7 @@ var uglifyOptions ={
       output: {
         beautify: !release
       },
-      outSourceMap: true
+      outSourceMap: !release
 };
 
 module.exports = gulp.task('scripts', function () {

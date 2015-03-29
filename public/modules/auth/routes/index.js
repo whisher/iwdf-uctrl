@@ -8,7 +8,7 @@ function config($stateProvider,$httpProvider) {
         	template: '<ui-view/>',
         	resolve:{
             	auth : function(Auth){
-            		return Auth.isLoggedIn();
+            		return Auth.hasValidToken();
             	}
             }
 

@@ -4,7 +4,11 @@
 function run($rootScope) {
     $rootScope.global  = {};
     $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams){ 
-	$rootScope.global.currentTabIcon = toState.data.currentTabIcon;
+      $rootScope.global.currentTabIcon = 'user';
+      if(toState.data){
+        $rootScope.global.currentTabIcon = toState.data.currentTabIcon;
+      }
+	
     });
    
 }
