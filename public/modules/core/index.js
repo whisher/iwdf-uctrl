@@ -20,8 +20,7 @@ angular.module('core', [
 	'core.filters',
       	'core.directives',
       	'core.controllers',
-     	'core.routes',
-      'socket'
+     	'core.routes'
 ])
   .run(run);
 
