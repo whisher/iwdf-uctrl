@@ -3,10 +3,12 @@
 function config(tmhDynamicLocaleProvider, $translateProvider, LANG) {
   tmhDynamicLocaleProvider.localeLocationPattern('scripts/i18n/angular-locale_{{locale}}.js');
   $translateProvider.translations('en', {
-    HEADLINE: 'Hello there, This is my awesome app!'
+    HEADLINE: 'Hello there, This is my awesome app!',
+    WELCOME: 'Welcome!'
   })
   .translations('it', {
     HEADLINE: 'Ciao, questa è la mia cool app!',
+    WELCOME: 'Benvenuto!'
   }); 
   $translateProvider.preferredLanguage(LANG);
 }

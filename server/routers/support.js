@@ -13,7 +13,7 @@ module.exports = function(app, auth, jwt) {
 
   // Root routing
   app.route('/api/support')
-    .get(support.all)
+    .get(jwt, auth.isAdmin, support.all)
     .post(jwt,support.create)
     // 405 Method Not Allowed
     .all(function (req, res, next) {
@@ -21,7 +21,13 @@ module.exports = function(app, auth, jwt) {
       err.route = '/api/support';
       err.status = 405;
       next(err);
-    });
+  });
+
+  app.route('/api/support/user')
+    .get(jwt, support.user);
+
+  app.route('/api/support/onhold')
+    .get(jwt, auth.isAdmin, support.onHold);
 
   app.route('/api/support/:supportId')
     .get(auth.isMongoId, support.show)
@@ -31,10 +37,9 @@ module.exports = function(app, auth, jwt) {
   // Setting up the supportId param
   app.param('supportId', support.support);
   
-  app.route('/api/support/user/:userId')
-    .get(auth.isMongoId, support.userId);
+ 
 
-  app.route('/api/support/message/onhold')
+  app.route('/api/support/onhold')
     .get(support.onHold);
 
 };

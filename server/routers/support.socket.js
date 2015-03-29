@@ -17,13 +17,14 @@ function onSocket(io){
 				socket.join(roomAdmins);
 				socket.broadcast.emit('admins connect',admins);
 				socket.emit('users connect', users);
+				console.log('admin',users);
 			}
 			else{
 				users[user.id] = user;
 				socket.join(user.id);
 				socket.broadcast.emit('users connect',users);
 				socket.emit('admins connect', admins);
-				console.log(users);
+				console.log('user',users);
 			}
 		}
 		socket.on('authenticate',onAuthenticate);

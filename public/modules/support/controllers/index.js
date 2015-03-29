@@ -51,27 +51,37 @@ function SupportController(Socket,Messages, messages) {
   });
   Socket.on('users connect', function(users){
     support.usersOnLine = users;
+    console.log('users connect', users);
   });
   Socket.on('error', function(error) {
     if (error.type === 'UnauthorizedError' || error.code === 'invalid_token') {
       return $state.go('home');
     }
   });
-
-  
-  
-  
-
-  
 }
+
 function SupportUserController(Socket,Messages, messages) {
   var supportUser = this; 
   var data = messages.data;
   supportUser.supportId = data._id;
   supportUser.messages = data.messages;
-  console.log(supportUser.messages );
-  supportUser.welcome = 'Welcome';
   supportUser.supportIsOnline = false;
+  
+  supportUser.data = {};
+  supportUser.data.type = 'question';
+  supportUser.data.status = 'open';
+  supportUser.send= function(){
+    Messages.update(supportUser.supportId,supportUser.data).then(function(response) {
+      supportUser.messages = response.data.messages;
+      console.log(supportUser.messages);
+      Socket.emit('support user update',response.data);
+      supportUser.data.text = '';
+    })
+    .catch(function(response) {
+      console.log('error');
+    });
+  };
+
   Socket.removeAllListeners();
   Socket.on('connect', function(){
           Socket.emit('authenticate');
@@ -90,21 +100,7 @@ function SupportUserController(Socket,Messages, messages) {
       return $state.go('home');
     }
   });
-
-  supportUser.data = {};
-  supportUser.data.type = 'question';
-  supportUser.data.status = 'open';
-  supportUser.send= function(){
-    Messages.update(supportUser.supportId,supportUser.data).then(function(response) {
-      supportUser.messages = response.data.messages;
-      console.log(supportUser.messages);
-      Socket.emit('support user update',response.data);
-      supportUser.data.text = '';
-    })
-    .catch(function(response) {
-      console.log('error');
-    });
-  };
+  
 }
 angular.module('support.controllers', [])
     .controller('SupportController', SupportController)

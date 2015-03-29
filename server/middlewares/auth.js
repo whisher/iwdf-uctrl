@@ -45,3 +45,13 @@ exports.isOwner = function(req, res, next) {
   }
   next();
 };
+
+/**
+* Admin authorization 
+*/
+exports.isAdmin = function(req, res, next) {
+  if (!req.user.hasAdminRole) {
+    return res.sendStatus(401);
+  }
+  next();
+};

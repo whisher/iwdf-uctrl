@@ -4,10 +4,10 @@
 function Messages($http) {
   return {
     getOnHold: function() {
-        return $http.get('/api/support/message/onhold'); 
+        return $http.get('/api/support/onhold'); 
     },
-    getByUserId: function(userId) {
-        return $http.get('/api/support/user/'+userId); 
+    getByUser: function() {
+        return $http.get('/api/support/user'); 
     },
     update: function(id, data) {
       return $http.put('/api/support/' + id, data);

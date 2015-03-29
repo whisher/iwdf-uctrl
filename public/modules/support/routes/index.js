@@ -17,14 +17,14 @@ function config($stateProvider) {
                 currentTabIcon: 'support'
             } 
         })
-         .state('auth.support_user', {
-            url: '/support/user/:userId',
+         .state('auth.support user', {
+            url: '/support/user',
             templateUrl: 'support/templates/user.html',
             controller:'SupportUserController',
             controllerAs: 'supportUser',
             resolve: {
-               messages: function(Messages, $stateParams){
-                    return Messages.getByUserId($stateParams.userId);
+               messages: function(Messages){
+                    return Messages.getByUser();
                 }
             },
             data: {

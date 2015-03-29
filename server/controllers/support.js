@@ -88,17 +88,17 @@ exports.all = function(req, res) {
 /**
  * Supports by user id
  */
-exports.userId = function(req, res) {
-  var user = mongoose.Types.ObjectId(req.params.userId);
+exports.user = function(req, res) {
+  var user = mongoose.Types.ObjectId(req.user.id);
   Support.find({user:user}).sort('-created').populate('user', 'username email _id').exec(function(err, supports) {
     if (err) {
       return res.status(500).json([{'param':'supports','msg':'Cannot list the supports'}]);
     }
-    if(!supports.length){
+    if(!supports.length && !req.user.hasAdminRole){
       var support = new Support();
       support.user = mongoose.Types.ObjectId(req.user.id);
       support.save(function(err) {
-        if (err) {console.log(err);
+        if (err) {
           return res.status(500).json([{'param':'support','msg':'Cannot save the support'}]);
         }
         return res.status(201).json(support);
