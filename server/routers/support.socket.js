@@ -7,6 +7,7 @@ var admins = {},
 function onSocket(io){
 	return function onConnection(socket) {
 		var user = socket.decoded_token;
+		console.log('user connect');
 		function isAdmin(){
 			return user.hasAdminRole;
 		}
@@ -28,14 +29,12 @@ function onSocket(io){
 		socket.on('authenticate',onAuthenticate);
 
 		function supportUpdate(support){
-	  		console.log('support update 2',support.user._id);
 	  		io.in(support.user._id).emit('support update',support);
 	  	}
 		socket.on('support update', supportUpdate);
 
 		function supportUserUpdate(support){
-			console.log('support user updatett leave',user.id);
-		  	io.in(roomAdmins).emit('support user update',support);
+			io.in(roomAdmins).emit('support user update',support);
 		}
 		socket.on('support user update',supportUserUpdate);
   		
