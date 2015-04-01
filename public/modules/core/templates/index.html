@@ -2,7 +2,6 @@
 <div class="container">
     <div class="jumbotron">
       <h1><span class="fa fa-home"></span>Welcome</h1>
-      <h2>Test Test Test</h2>
       <h3 show-version></h3>
       <p data-ng-if="!global.isAuthenticated">
         <a href="" class="btn btn-lg btn-success"  data-ui-sref="session.signin"><i class="fa fa-sign-in"></i> Sign In</a>
@@ -14,7 +13,7 @@
       <div>
         <p>Currency: {{ 1000 | currency }}</p>
         <p>Date: {{1288323623006 | date:'medium'}}</p>
-        <p>Translate: {{ 'HEADLINE' | translate }}</p>
+        <p>Translate: {{ 'home.prologue' | translate }}</p>
         <p>Locale: {{global.locale.id}}</p>
         <p>Current lang: {{global.currentTranslate}}</p>
 

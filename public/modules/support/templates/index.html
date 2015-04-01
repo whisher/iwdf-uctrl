@@ -1,44 +1,57 @@
 <div class="support">
 	<div class="container"  data-ng-if="!support.hasSupport">
 		<div class="row">
-	      		<div class="well">
-	          			<h5 class="text-center">There is no support on hold</h5>
+	      		<div class="support__nodata">
+	          			<h3 class="text-center">There is no support on hold</h3>
 	      		</div>
 	  	</div>
 	</div>
-	<div class="container">
-		<div class="row">
-			<div class="col-md-4">
-				<div class="support__users">
-					<ul class="support__listGroup">
-			  			<li class="support__listGroupItem" data-ng-repeat="(userId,message) in support.messages track by message._id" data-ng-class="{ 'active' : (userId===support.showUserId), 
-			  			'userupdate' : !!support.userUpdate[userId]}" ng-click="support.show(userId)">
-			  			<span class="support__badge" data-ng-class="{'online':!!support.usersOnLine[userId]}">
-							<span class="fa fa-circle"></span>
-						</span>
-			  				{{::message.user.username}}
-			  			</li>
-		  			</ul>
-				</div >
-			</div>
-		  	<div class="col-md-8">
-		  		<div data-ng-repeat="message in support.message track by message._id" class="support__message">
-					<div class="support__clear">
-						<div class="support__{{message.type}}">
-							{{::message.text}}
+	<div class="container" data-ng-if="support.hasSupport">
+		<div class="support__box">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="support__users">
+						<ul class="support__listGroup">
+				  			<li class="support__listGroupItem" data-ng-repeat="(userId,message) in support.messages track by message._id" data-ng-class="{ 'active' : (userId===support.showUserId), 
+				  			'userupdate' : !!support.userUpdate[userId]}" ng-click="support.show(userId)">
+				  			<span class="support__badge" data-ng-class="{'online':!!support.usersOnLine[userId]}">
+								<span class="fa fa-circle"></span>
+							</span>
+				  				{{::message.user.username}}
+				  			</li>
+			  			</ul>
+					</div >
+				</div>
+			  	<div class="col-md-8">
+			  		<div data-ng-repeat="message in support.message track by message._id" class="support__message">
+						<div class="support__clear">
+							<div class="support-user__{{message.type}}">
+							<div class="support-user__{{message.type}}__text">
+							 {{message.text}}
+							 </div>
+							 <div class="support-user__{{message.type}}__date">
+							 	<span data-show-date input="{{message.created}}"></span>
+							 </div>
+						</div>
 						</div>
 					</div>
-				</div>
-			</div >
-		</div>	
+				</div >
+			</div>	
+		</div>		
 	</div>
 	<div class="support-user__bottom">
 		<div class="container" data-ng-if="support.hasSupport">
 			<form name="form" class="support__form" data-ng-submit="support.send()" novalidate>
+				<div class="counter" id="counter"></div>
 				<div class="support__formGroup form-no-required">
 					<div class="input-group">
-						<span class="input-group-addon fa fa-pencil"></span>
-						<input type="text" tabindex="1" name="message" placeholder="Type your message (at least two characters)" class="form-control input-lg"  autocomplete="off" data-ng-minlength="2" data-ng-maxlength="255" data-ng-model="support.data.text" />
+						<span class="input-group-addon fa fa-pencil support-fa"></span>
+						<input 
+						type="text" 
+						tabindex="1" 
+						name="message" 
+						placeholder="{{ 'support.placeholder' | translate }}" class="support-input"  autocomplete="off" data-ng-minlength="2" data-ng-maxlength="255" data-ng-model="support.data.text"
+						data-char-limit from="10" to="500" />
 					</div>
 				</div>
 			</form>

@@ -22,29 +22,21 @@ exports.support = function(req, res, next, id) {
 };
 
 /**
- * Create a support
- */
-exports.create = function(req, res) {
-  var support = new Support(req.body);
-  support.user = mongoose.Types.ObjectId(req.user.id);
-  support.save(function(err) {
-    if (err) {console.log(err);
-      return res.status(500).json([{'param':'support','msg':'Cannot save the support'}]);
-    }
-    res.status(201).json(support);
-  });
-};
-
-/**
  * Update a support
  */
 exports.update = function(req, res) {
+  req.checkBody('text', 'The message must be between 10-500 characters long').len(10, 500);
+  var errors = req.validationErrors();
+  if (errors) {
+      return res.status(400).json(errors);
+  }
   var message = new Message({ text: req.body.text, type: req.body.type });
   message.user = req.user;
   var support = req.support;
   support.status = req.body.status;
+  support.updated = Date.now();
   var messagesLen = support.messages.push(message);
-  support.save(function(err) {console.log(err);
+  support.save(function(err) {
     if (err) {
       return res.status(500).json([{'param':'support','msg':'Cannot update the support'}]);
     }
@@ -114,7 +106,7 @@ exports.user = function(req, res) {
  * List of Supports
  */
 exports.onHold = function(req, res) {
-  Support.find( { status: 'open' }).sort('-created').populate('user', 'username email _id').exec(function(err, supports) {
+  Support.find( { status: 'open' }).sort('-updated').populate('user', 'username email _id').exec(function(err, supports) {
     if (err) {
       return res.status(500).json([{'param':'supports','msg':'Cannot list the supports'}]);
     }

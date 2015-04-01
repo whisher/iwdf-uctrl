@@ -7,6 +7,8 @@ angular.module('support', [
   'socket',
   'support.services',
   'support.controllers',
+  'support.filters',
+  'support.directives',
   'support.routes'
 ]);
 

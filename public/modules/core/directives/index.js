@@ -23,7 +23,7 @@ function userFeedback() {
         if(len > 1){
 	     for (var i = 0; i < len; i++){
 		  $parentDiv.removeClass(currentsClass[i]);
-		}		
+	}		
         }
         $parentDiv.addClass(currentsClass[0]);
         if(ctrl.$valid){

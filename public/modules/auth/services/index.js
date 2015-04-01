@@ -38,11 +38,13 @@ function UserTokenStorage($sessionStorage) {
   };
 }
 
-function signinModal($rootScope, $modal, $templateCache) {
+function signinModal($rootScope, $modal, $templateCache, $state, $timeout) {
     function successCallback (data) {
         $rootScope.$emit('auth-is-authenticated', data.token);
     }
-    function errorCallback (data) {}
+    function errorCallback (data) {
+        $state.go('home');
+    }
     return {
         open : function(){
             var modalInstance =  $modal.open({

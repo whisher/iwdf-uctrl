@@ -46,7 +46,11 @@ var SupportSchema = new Schema({
 		enum: ['open', 'closed'],
 		default: 'open'
 	},
-	messages :[MessageSchema]	
+	messages :[MessageSchema],
+	updated: {
+		type: Date,
+    		default: Date.now	
+	}	
 });
 
 /**

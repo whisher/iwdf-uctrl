@@ -8,6 +8,15 @@ var mongoose = require('mongoose'),
       jwt = require('jsonwebtoken'),
 	utils = require('../utils/errors');
 
+/**
+ * just logged route
+ */
+exports.isjustlogged = function(req, res) {
+  if (req.isAuthenticated()) {
+    return res.sendStatus(403);
+  }
+  return res.sendStatus(200);
+};
 
 
 /**

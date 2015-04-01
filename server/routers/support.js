@@ -14,7 +14,7 @@ module.exports = function(app, auth, jwt) {
   // Root routing
   app.route('/api/support')
     .get(jwt, auth.isAdmin, support.all)
-    .post(jwt,support.create)
+    //.post(jwt,support.create)
     // 405 Method Not Allowed
     .all(function (req, res, next) {
       var err = new Error();

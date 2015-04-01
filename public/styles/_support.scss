@@ -1,7 +1,20 @@
 .support{
-  background-color: #CCC;
+  background-color: #eee;
   position: relative;
   height: 100%;
+  &__nodata{
+    @extend .well;
+    background-color:#E4F1FA;
+    color:#5990BB;
+    border:2px solid #1770AA;
+    h3{
+
+    }
+  }
+  &__box{
+     height: 100%;
+     background-color:#fff;
+  }
   &__users{
 
   }
@@ -31,16 +44,44 @@
     border: 1px solid #FFD757;
   }
   &__reply{
-    background-color:#FF8C57;
-    color:#212121;
-    padding:20px;
+    min-width: 400px;
     float:left;
+    &__text{
+        max-width: 300px;
+        word-wrap: break-word;
+        padding:20px;
+        float:left;
+        background-color:#E4F1FA;
+        color:#5990BB;
+        border:4px solid #1770AA;
+    }
+    &__date{
+      min-width: 100px;
+      float:left;
+      text-align:left;
+      padding-top: 5px;
+      padding-left: 5px;
+    }
   }
   &__question{
-    background-color:#FFD757;
-    color:#212121;
-    padding:20px;
+    min-width: 400px;
     float:right;
+    &__text{
+      max-width: 300px;
+      word-wrap: break-word;
+      padding:20px;
+      float:right;
+      background-color:#CEFFCE;
+      color:#00A938;
+      border:4px solid #22B14C;
+    }
+    &__date{
+      min-width: 100px;
+      float:right;
+      text-align:right;
+      padding-top: 5px;
+      padding-right: 5px;
+    }
   }
   &__clear{
     @extend .clearfix; 
@@ -56,20 +97,44 @@
   &__formGroup{
     @extend .form-group; 
     margin-right:0;
-      
+    .support-input{
+      @extend .form-control;
+      @extend .input-lg;
+      border: 1px solid #8CB7D5;
+      background-color: #E4F1FA;
+    }
+    .support-fa{
+        color:#8CB7D5;
+        background-color: #E4F1FA;
+        border-bottom: 1px solid #8CB7D5;
+        border-left: 1px solid #8CB7D5;
+        border-right: none;
+        border-top: 1px solid #8CB7D5;
+
+    } 
   }
 }
+
 .support-user {
-  background-color: #CCC;
+  background-color: #fff;
   position: relative;
   height: 100%;
-  &__header {background-color: green;
+  background-image:  url(/images/support-bckg.png);
+  background-size:   cover;                     
+  background-repeat: no-repeat;
+  background-position: center center;  
+  &__box{
+     height: 100%;
+  }
+  &__header {
     height:150px;
     position: relative;
-    img{
-      width: 100%;
-      display: block;
-      height: 100%;
+    h2{
+      background-color: #EFF7FC;
+      text-align: center;
+      color:#307BB0;
+      border:2px solid #307BB0;
+      padding: 5px;
     }
   }
   &__supportOnline{
@@ -87,19 +152,57 @@
     color:#fff;
   }
   &__messages{
- 
+    overflow: auto;
   }
-  &__reply{
-    background-color:#FF8C57;
-    color:#212121;
+  &__welcome{
+    min-width: 400px;
+    float:left;
+    word-wrap: break-word;
     padding:20px;
     float:left;
+    background-color:#E4F1FA;
+    color:#5990BB;
+    border:4px solid #1770AA;
+  }
+  &__reply{
+    min-width: 400px;
+    float:left;
+    &__text{
+        max-width: 300px;
+        word-wrap: break-word;
+        padding:20px;
+        float:left;
+        background-color:#E4F1FA;
+        color:#5990BB;
+        border:4px solid #1770AA;
+    }
+    &__date{
+      min-width: 100px;
+      float:left;
+      text-align:left;
+      padding-top: 5px;
+      padding-left: 5px;
+    }
   }
   &__question{
-    background-color:#FFD757;
-    color:#212121;
-    padding:20px;
+    min-width: 400px;
     float:right;
+    &__text{
+      max-width: 300px;
+      word-wrap: break-word;
+      padding:20px;
+      float:right;
+      background-color:#CEFFCE;
+      color:#00A938;
+      border:4px solid #22B14C;
+    }
+    &__date{
+      min-width: 100px;
+      float:right;
+      text-align:right;
+      padding-top: 5px;
+      padding-right: 5px;
+    }
   }
   &__clear{
     @extend .clearfix; 
@@ -109,7 +212,7 @@
 
   }
   &__form{
-    
+    @extend .clearfix; 
     
   }
   &__bottom{
@@ -121,6 +224,34 @@
   &__formGroup{
     @extend .form-group; 
     margin-right:0;
-      
+    clear:both; 
+    .support-input{
+      @extend .form-control;
+      @extend .input-lg;
+      border: 1px solid #8CB7D5;
+      background-color: #E4F1FA;
+    }
+    .support-fa{
+        color:#8CB7D5;
+        background-color: #E4F1FA;
+        border-bottom: 1px solid #8CB7D5;
+        border-left: 1px solid #8CB7D5;
+        border-right: none;
+        border-top: 1px solid #8CB7D5;
+    }
   }
+}
+.counter{
+    @extend .pull-right; 
+    width: 100px;
+    line-height:26px;
+    font-seize:14px;
+    color: $brand-success;
+    text-align:right;
+}
+.counter.warning{
+   color: $brand-warning;
+}
+.counter.danger{
+  color: $brand-danger;
 }

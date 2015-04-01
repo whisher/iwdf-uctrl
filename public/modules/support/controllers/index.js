@@ -20,7 +20,6 @@ function SupportController(Socket,Messages, messages) {
     var current = support.messages[key];
     support.message = current.messages;
     support.supportId = current._id;
-    console.log('supportId affter',support.supportId);
     if(support.userUpdate[key]){
       delete support.userUpdate[key];
     }
@@ -31,14 +30,17 @@ function SupportController(Socket,Messages, messages) {
   support.data.type = 'reply';
   support.data.status = 'closed';
   support.send= function(){
-    Messages.update(support.supportId,support.data).then(function(response) {
-      support.message = response.data.messages;
-      Socket.emit('support update',response.data);
-      support.data.text = '';
-    })
-    .catch(function(response) {
-      console.log('error');
-    });
+    var len = support.data.text.length;
+    if((len > 10) && (len <500)){
+      Messages.update(support.supportId,support.data).then(function(response) {
+        support.message = response.data.messages;
+        Socket.emit('support update',response.data);
+        support.data.text = '';
+      })
+      .catch(function(response) {
+        console.log(response.data[0].msg);
+      });
+    }
   };
 
   Socket.removeAllListeners();
@@ -71,15 +73,18 @@ function SupportUserController(Socket,Messages, messages) {
   supportUser.data.type = 'question';
   supportUser.data.status = 'open';
   supportUser.send= function(){
-    Messages.update(supportUser.supportId,supportUser.data).then(function(response) {
-      supportUser.messages = response.data.messages;
-      console.log(supportUser.messages);
-      Socket.emit('support user update',response.data);
-      supportUser.data.text = '';
-    })
-    .catch(function(response) {
-      console.log('error');
-    });
+    var len = supportUser.data.text.length;
+    if((len > 10) && len <500){
+      Messages.update(supportUser.supportId,supportUser.data).then(function(response) {
+        supportUser.messages = response.data.messages;
+        console.log(supportUser.messages);
+        Socket.emit('support user update',response.data);
+        supportUser.data.text = '';
+      })
+      .catch(function(response) {
+        console.log(response.data[0].msg);
+      });
+    }
   };
 
   Socket.removeAllListeners();
