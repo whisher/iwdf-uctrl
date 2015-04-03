@@ -9,7 +9,8 @@ translationTable.en = {
     support :{
       welcome : 'Welcome!',
       header: 'Support live chat',
-      placeholder: 'Type your message (min 10 characters 500 max)'
+      placeholder: 'Type your message (min 10 characters 500 max)',
+      reply : 'EN - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ipsum arcu',
     }
 };
 
@@ -20,7 +21,8 @@ translationTable.it = {
   support :{
       welcome :  'Benvenuto!',
       header: 'Supporto live chat',
-      placeholder: 'Scrivi il tuo messaggio (min 10 caratteri 500 max)'
+      placeholder: 'Scrivi il tuo messaggio (min 10 caratteri 500 max)',
+      reply:'IT - Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ipsum arcu'
   }
 };
 function config(tmhDynamicLocaleProvider, $translateProvider, LANG) {

@@ -31,7 +31,8 @@ function SupportController(Socket,Messages, messages) {
   support.data.status = 'closed';
   support.send= function(){
     var len = support.data.text.length;
-    if((len > 10) && (len <500)){
+    support.data.text = support.data.text.replace(/<\/?[^>]+(>|$)/g, '');
+    if( (len >= 10) && (len <= 500) ){
       Messages.update(support.supportId,support.data).then(function(response) {
         support.message = response.data.messages;
         Socket.emit('support update',response.data);
@@ -62,7 +63,7 @@ function SupportController(Socket,Messages, messages) {
   });
 }
 
-function SupportUserController(Socket,Messages, messages) {
+function SupportUserController(Socket,Messages, messages, $translate) {
   var supportUser = this; 
   var data = messages.data;
   supportUser.supportId = data._id;
@@ -74,10 +75,19 @@ function SupportUserController(Socket,Messages, messages) {
   supportUser.data.status = 'open';
   supportUser.send= function(){
     var len = supportUser.data.text.length;
-    if((len > 10) && len <500){
+    supportUser.data.text = supportUser.data.text.replace(/<\/?[^>]+(>|$)/g, '');
+    if( (len >= 10) && (len <=500) ){
       Messages.update(supportUser.supportId,supportUser.data).then(function(response) {
         supportUser.messages = response.data.messages;
-        console.log(supportUser.messages);
+        $translate('support.reply').then(function (reply) {
+          var data = {
+            text : reply,
+            created: Date.now(),
+            type: 'reply'
+          };
+          supportUser.messages.push(data);
+          console.log(supportUser.messages);
+        });
         Socket.emit('support user update',response.data);
         supportUser.data.text = '';
       })

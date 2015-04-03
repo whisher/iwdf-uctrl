@@ -11,11 +11,10 @@ function charLimit() {
         link: function(scope, element){
             var from = scope.from;
             var to = scope.to;
-          
+            var box = angular.element(document.getElementById('counter'));
             element.bind('keyup', function(event){
-                var box = angular.element(document.getElementById('counter'));
                 var len = element.val().length;
-                var toType = (to - len);
+                var toType = (len> 0)?(to - len):'';
                 var boxClasses = box[0].className.split(/\s+/);
                 var baseClass = boxClasses.shift();
                 boxClasses.forEach(function(cls){
@@ -23,18 +22,14 @@ function charLimit() {
                 });
                 box.addClass(baseClass);
                 box.text(toType);
+                box.toggleClass('danger', (len < from) || (len > to));
                 box.toggleClass('warning', (to - len) <= 10);
-                box.toggleClass('danger', (len < from));
             });
             element.bind('keypress', function(event){
-                // Once the limit has been met or exceeded, prevent all keypresses from working
-                 console.log('from',from,to);
-                   console.log('is',element.val().length >= to);
-                if (element.val().length >= to){
-                    // Except backspace
-                    if (event.keyCode !== 8){
+                if ( (element.val().length < from) || (element.val().length > to)){
+                   if (event.keyCode === 13){
                         event.preventDefault();
-                    }
+                   }
                 }
             });
         }
@@ -53,8 +48,47 @@ function showDate($filter) {
     }
   };
 }
+function showOverflow($timeout) {
+    return {
+        restrict: 'A',
+        scope:{
+            gap:'@',
+            message: '='
+        },
+        link: function(scope, element){
+            var docHeight =  $('#content').height();
+            var $element = $(element[0]);
+            /* admin*/
+            if(scope.message){
+                scope.$watch('message', function(newValue, oldValue) {
+                    if (newValue){
+                        var elHeight = $element.height();
+                        var viewport = docHeight - scope.gap;
+                        if(elHeight > viewport){
+                            $element.css('overflow','auto');
+                            $element.height(viewport);
+                        }
+                    }
+                });
+            }
+            /* user */
+            else{
+                $timeout(function () {
+                    var $element = $(element[0]);
+                    var elHeight = $element.height();
+                    var viewport = docHeight - scope.gap;
+                    if(elHeight > viewport){
+                        $element.css('overflow','auto');
+                        $element.height(viewport);
+                    }
+                });
+            }
+        }
+    };
+}
 angular.module('support.directives', [])
   .directive('charLimit', charLimit)
-  .directive('showDate', showDate);
+  .directive('showDate', showDate)
+  .directive('showOverflow', showOverflow);
 })();
 

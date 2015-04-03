@@ -6,7 +6,8 @@
 var mongoose = require('mongoose'),
   Support = mongoose.model('Support'),
   Message = mongoose.model('Message'),
-  _ = require('lodash');
+  _ = require('lodash'),
+  striptags = require('striptags');
 
 
 /**
@@ -30,7 +31,7 @@ exports.update = function(req, res) {
   if (errors) {
       return res.status(400).json(errors);
   }
-  var message = new Message({ text: req.body.text, type: req.body.type });
+  var message = new Message({ text: striptags(req.body.text), type: req.body.type });
   message.user = req.user;
   var support = req.support;
   support.status = req.body.status;

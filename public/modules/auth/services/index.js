@@ -79,9 +79,6 @@ function HttpInterceptor($rootScope, $q, UserTokenStorage) {
             }
             if (rejection.status === 403) {
                 $rootScope.$emit('auth-forbidden', rejection);
-            }//heroku 
-            if (rejection.status === 503) {
-                $rootScope.$emit('auth-unauthorized', rejection);
             }
             return $q.reject(rejection);
         }

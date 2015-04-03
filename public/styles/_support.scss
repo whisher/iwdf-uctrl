@@ -97,6 +97,7 @@
   &__formGroup{
     @extend .form-group; 
     margin-right:0;
+    clear:both; 
     .support-input{
       @extend .form-control;
       @extend .input-lg;
@@ -151,8 +152,8 @@
     background-color:#FFE182;
     color:#fff;
   }
-  &__messages{
-    overflow: auto;
+  &__messages{ 
+   /* overflow: auto;*/
   }
   &__welcome{
     min-width: 400px;
@@ -213,7 +214,7 @@
   }
   &__form{
     @extend .clearfix; 
-    
+    height:60px;
   }
   &__bottom{
     position: fixed;

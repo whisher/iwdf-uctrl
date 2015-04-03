@@ -22,17 +22,17 @@
 			  			</ul>
 					</div >
 				</div>
-			  	<div class="col-md-8">
+			  	<div class="col-md-8 support__messages" data-show-overflow gap="60" message="support.message">
 			  		<div data-ng-repeat="message in support.message track by message._id" class="support__message">
 						<div class="support__clear">
 							<div class="support-user__{{message.type}}">
-							<div class="support-user__{{message.type}}__text">
-							 {{message.text}}
-							 </div>
-							 <div class="support-user__{{message.type}}__date">
-							 	<span data-show-date input="{{message.created}}"></span>
-							 </div>
-						</div>
+								<div class="support-user__{{message.type}}__text">
+								 {{message.text}}
+								 </div>
+								 <div class="support-user__{{message.type}}__date">
+								 	<span data-show-date input="{{message.created}}"></span>
+								 </div>
+							</div>
 						</div>
 					</div>
 				</div >

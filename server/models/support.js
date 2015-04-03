@@ -34,7 +34,7 @@ var MessageSchema = new Schema({
 */
 var SupportSchema = new Schema({
 	user: {
-    		type: Schema.ObjectId,
+    		type: Schema.Types.ObjectId,
     		ref: 'User'
   	},
 	created: {
