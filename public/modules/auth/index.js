@@ -6,20 +6,24 @@ function run($window, $rootScope, $state, jwtHelper, signinModal, HAS_MODAL_LOGI
   $rootScope.global.isModalOpen  = false;
   $rootScope.global.errors = [];
   var token = UserTokenStorage.get();
-  if(token){
-    token = jwtHelper.decodeToken(token);
+  if(token){ 
+    var bool = jwtHelper.isTokenExpired(token);
+    if(bool){
+      token = undefined;
+      logout();
+    }
+    else{
+      token = jwtHelper.decodeToken(token);
+    }
   }
+  
+
   $rootScope.global.isAuthenticated =  token;
-  /*$window.onbeforeunload = function(e){
-    Auth.logout().then(function(response) {
-      UserTokenStorage.del();
-    })
-    .catch(function(response) {
-    });
-  };*/
+  
   
   $rootScope.$on('auth-unauthorized', function(event, data) { 
     UserTokenStorage.del();
+    delete $rootScope.global.isAuthenticated;
     if(HAS_MODAL_LOGIN){
       $rootScope.global.isModalOpen  = true;
       signinModal.open();
@@ -52,30 +56,6 @@ function run($window, $rootScope, $state, jwtHelper, signinModal, HAS_MODAL_LOGI
     $rootScope.global.errors.length = 0;
   };
 
-  
- 
- $rootScope.global.logout = function() {
-    Auth.logout().then(function(response) {
-      UserTokenStorage.del();
-      delete $rootScope.global.isAuthenticated;
-      $state.go('home',{}, {reload: true});     
-    })
-    .catch(function(response) {
-      throw new Error('Sorry, something went so wrong');
-    });
-        
-  }; 
-
-  $rootScope.global.isOwner = function(authorId) {
-    if(!$rootScope.global.isAuthenticated){
-      return false;
-    }
-    if($rootScope.global.isAuthenticated.hasAdminRole){
-      return true;
-    }
-    return  $rootScope.global.isAuthenticated.id === authorId;
-  }; 
-
   $rootScope.global.signin = function() {
     if(HAS_MODAL_LOGIN){
       $rootScope.global.show('signin');
@@ -92,12 +72,28 @@ function run($window, $rootScope, $state, jwtHelper, signinModal, HAS_MODAL_LOGI
     $state.go('session.register');  
   }; 
 
+  $rootScope.global.logout = function() {
+    logout();
+  }; 
+
+  function logout(){
+     Auth.logout().then(function(response) {
+      UserTokenStorage.del();
+      $rootScope.$broadcast('logout', $rootScope.global.isAuthenticated);
+      delete $rootScope.global.isAuthenticated;
+      $state.go('home',{}, {reload: true});     
+    })
+    .catch(function(response) {
+      throw new Error('Sorry, something went so wrong');
+    }); 
+  }   
 }
 
 angular.module('auth',[
   'ui.bootstrap',
   'ngStorage',
   'angular-jwt',
+  'socket',
   'auth.services', 
   'auth.controllers', 
   'auth.routes'

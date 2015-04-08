@@ -17,9 +17,9 @@ exports.isjustlogged = function(req, res, next) {
 };
 
 /**
- * Generic not logged routing middleware
+ * Generic is logged routing middleware
  */
-exports.isnotlogged = function(req, res, next) {
+exports.isLogged = function(req, res, next) {
   if (!req.isAuthenticated()) {
     return res.sendStatus(403);
   }

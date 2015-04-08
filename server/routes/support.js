@@ -3,9 +3,12 @@
 /**
  * Module dependencies.
  */
-var support = require('../controllers/support');
-module.exports = function(app, auth, jwt) {
+var support = require('../controllers/support'),
+  auth = require('../middlewares/auth');
 
+module.exports = function(app) {
+  var jwt = require('../middlewares/jwt')(app);
+  
   // Send available options on OPTIONS requests
   app.options( '/api/support', function (req, res) {
     res.send(['GET', 'PUT', 'DELETE', 'OPTIONS']);

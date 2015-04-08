@@ -20,7 +20,11 @@ var compression = require('compression'),
 
 
 
-module.exports = function(config, app, passport, db) {
+module.exports = function(configs, app, passport, db) {
+  // Setting application local variables
+  app.locals.rootPath =configs.rootPath;
+  app.locals.tokenExpiresInMinutes = configs.tokenExpiresInMinutes;
+  app.locals.apiSecret = configs.apiSecret;
 
   // show error on screen. False for all envs except development
   app.set('showStackError', (app.get('env') === 'development'));
@@ -53,18 +57,18 @@ module.exports = function(config, app, passport, db) {
   }
   else{
     app.use(expressLogger({
-      path: config.rootPath + '/log/requests.log'
+      path: configs.rootPath + '/log/requests.log'
     }));
   }
 
   // assign the template engine to .html files
-  app.engine('html', consolidate[config.templateEngine]);
+  app.engine('html', consolidate[configs.templateEngine]);
 
   // set .html as the default extension
   app.set('view engine', 'html');
 
   // set view path
-  app.set('views', config.serverPath + '/views');
+  app.set('views', configs.serverPath + '/views');
 
   // The cookieParser should be above session
   app.use(cookieParser());
@@ -79,13 +83,13 @@ module.exports = function(config, app, passport, db) {
 
   // Express/Mongo session storage
   app.use(session({
-    secret: config.sessionSecret,
+    secret: configs.sessionSecret,
     store: new mongoStore({
       db: db.connection.db,
-      collection: config.sessionCollection
+      collection: configs.sessionCollection
     }),
-    cookie: config.sessionCookie,
-    name: config.sessionName,
+    cookie: configs.sessionCookie,
+    name: configs.sessionName,
     resave: true,
     saveUninitialized: true
   }));

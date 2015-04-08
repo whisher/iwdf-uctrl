@@ -13,14 +13,14 @@ function run($rootScope) {
    
 }
 angular.module('core', [
-      	'ui.router',
-      	'templates',
-      'ngAnimate',
-	'core.services',
-	'core.filters',
-      	'core.directives',
-      	'core.controllers',
-     	'core.routes'
+  'ui.router',
+  'templates',
+  'ngAnimate',
+  'core.services',
+  'core.filters',
+  'core.directives',
+  'core.controllers',
+  'core.routes'
 ])
   .run(run);
 

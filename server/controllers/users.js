@@ -4,8 +4,8 @@
  * Module dependencies.
  */
 var mongoose = require('mongoose'),
-	User = mongoose.model('User'),
-	utils = require('../utils/errors');
+	User = mongoose.model('User');
+  
 /**
  * Find user by id
  */

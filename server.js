@@ -4,7 +4,7 @@
 * Set up debug for developement
 */
  if (process.env.NODE_ENV === 'development') {
- 	process.env.DEBUG = 'app';
+ 	process.env.DEBUG = 'app:*';
 }
 /**
  * Module dependencies.
@@ -21,8 +21,9 @@ var fs = require('fs'),
 	socketio_jwt = require('socketio-jwt'),
 	configs = require('./server/config/config'),
 	auth = require('./server/middlewares/auth'),
-	jwt = require('./server/middlewares/jwt')(configs),
-	debug = require('debug')('app');
+	debug = require('debug'),
+	info = debug('app:info'),
+	error = debug('app:error');
 
 // Bootstrap db connection
 var db = require('./server/config/db')(configs);
@@ -53,10 +54,10 @@ app.use(express.static( path.join(configs.rootPath, configs.releasePath)));
 app.use('/screenshots',express.static(path.join(configs.rootPath, 'screenshots')));
 
 // Set up routes
-require(configs.serverPath+'/routers/index')(app, configs, jwt);
-require(configs.serverPath+'/routers/auth')(app, auth, configs, jwt, passport);
-require(configs.serverPath+'/routers/users')(app, auth);
-require(configs.serverPath+'/routers/support')(app, auth, jwt);
+require(configs.serverPath+'/routes/index')(app);
+require(configs.serverPath+'/routes/auth')(app);
+require(configs.serverPath+'/routes/users')(app);
+require(configs.serverPath+'/routes/support')(app);
 
 // Manage 500 status
 app.use(function(err, req, res, next) {
@@ -64,7 +65,7 @@ app.use(function(err, req, res, next) {
 	if (!err){
 		return next();
 	}
-	debug(err.stack);
+	error(err.stack);
 	//For jwt
 	if (err.constructor.name === 'UnauthorizedError') {
     		res.status(401).send('Unauthorized');
@@ -80,7 +81,7 @@ app.use(function(err, req, res, next) {
 
 // Assume 404 since no middleware responded
 app.use(function(req, res) {
-	debug(req.url);
+	error(req.url);
 	if(configs.niceErrorPage){
 		return res.status(404).render('404');
 	}
@@ -103,13 +104,14 @@ supportNs.use(
   		handshake: true
 	})
 );
-supportNs.on('connection', require(configs.serverPath+'/routers/support.socket')(supportNs));
+supportNs.on('connection', require(configs.serverPath+'/routes/support.socket')(supportNs));
 
 // Binds and listens for connections
 server.listen(app.get('port'), function () {
-	debug( 'Express started on http://'  + configs.hostname + ':' +
+	info( 'Express started on http://'  + configs.hostname + ':' +
 		app.get('port') + ' env: ' + app.get('env') +  '; press Ctrl-C to terminate.' );
 });
 
 // Making the app variable be referenced directly from another module
 exports = module.exports = app;
+

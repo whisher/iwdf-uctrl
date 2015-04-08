@@ -5,20 +5,25 @@
  */
 var webshot = require('webshot');
 
-exports.partials = function(configs, jwt) {
-	return function(req, res) {
-      		var name = req.params.name;
-      		res.render('partials/' + name);
-  	};
+/**
+ * Protected view
+ */
+exports.partials = function(req, res) {
+	var name = req.params.name;
+      res.render('partials/' + name);
 };
-exports.screenshot = function(configs, jwt) {
+
+/**
+ * Build screenshot
+ */
+exports.screenshot = function(app) {
 	return function(req, res) {
       		var id = Math.random().toString(36).slice(2);
                         	var options = {
                          	onLoadFinished: function() {
                             	}
                         	};
-		webshot(req.body.url, configs.rootPath +'/screenshots/'+ id +'.png', options, function(err) {
+		webshot(req.body.url, app.locals.rootPath +'/screenshots/'+ id +'.png', options, function(err) {
   			if(!err){
 				res.json({ id: id});
   			}

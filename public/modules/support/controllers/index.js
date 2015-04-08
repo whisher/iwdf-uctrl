@@ -1,7 +1,7 @@
 (function() {
 'use strict';
 
-function SupportController(Socket,Messages, messages) {
+function SupportController($rootScope, $state, SocketSupport, Messages, messages) {
   var support = this; 
   
   var data = messages.data;
@@ -31,11 +31,10 @@ function SupportController(Socket,Messages, messages) {
   support.data.status = 'closed';
   support.send= function(){
     var len = support.data.text.length;
-    support.data.text = support.data.text.replace(/<\/?[^>]+(>|$)/g, '');
     if( (len >= 10) && (len <= 500) ){
       Messages.update(support.supportId,support.data).then(function(response) {
         support.message = response.data.messages;
-        Socket.emit('support update',response.data);
+        SocketSupport.emit('support update',response.data);
         support.data.text = '';
       })
       .catch(function(response) {
@@ -44,26 +43,39 @@ function SupportController(Socket,Messages, messages) {
     }
   };
 
-  Socket.removeAllListeners();
-  Socket.on('connect', function(){
-    Socket.emit('authenticate');
+  SocketSupport.removeAllListeners();
+
+  SocketSupport.on('connect', function(){
+    SocketSupport.emit('authenticate');
   });
-  Socket.on('support user update', function(data){
+
+  SocketSupport.on('support user update', function(data){
+    support.hasSupport = true;
     support.userUpdate[data.user._id] = data;
-    support.messages[data.user._id] = data;
+    Messages.getOnHold().then(function(response) {
+        support.messages = response.data;
+      })
+      .catch(function(response) {
+        console.log(response);
+    });
   });
-  Socket.on('users connect', function(users){
+
+  SocketSupport.on('users connect', function(users){
     support.usersOnLine = users;
-    console.log('users connect', users);
   });
-  Socket.on('error', function(error) {
+
+  SocketSupport.on('error', function(error) {
     if (error.type === 'UnauthorizedError' || error.code === 'invalid_token') {
       return $state.go('home');
     }
   });
+
+  $rootScope.$on('logout', function(event, user) { 
+    SocketSupport.emit('logout',user);
+  });
 }
 
-function SupportUserController(Socket,Messages, messages, $translate) {
+function SupportUserController($rootScope, $state, SocketSupport, Messages, messages, $translate) {
   var supportUser = this; 
   var data = messages.data;
   supportUser.supportId = data._id;
@@ -86,9 +98,8 @@ function SupportUserController(Socket,Messages, messages, $translate) {
             type: 'reply'
           };
           supportUser.messages.push(data);
-          console.log(supportUser.messages);
         });
-        Socket.emit('support user update',response.data);
+        SocketSupport.emit('support user update',response.data);
         supportUser.data.text = '';
       })
       .catch(function(response) {
@@ -97,23 +108,30 @@ function SupportUserController(Socket,Messages, messages, $translate) {
     }
   };
 
-  Socket.removeAllListeners();
-  Socket.on('connect', function(){
-          Socket.emit('authenticate');
+  SocketSupport.removeAllListeners();
+
+  SocketSupport.on('connect', function(){
+          SocketSupport.emit('authenticate');
   });
-  Socket.on('support update', function(data){
+
+  SocketSupport.on('support update', function(data){
           console.log('support update',data);
           supportUser.messages = data.messages;
   });
-  Socket.on('admins connect', function(admins){
+
+  SocketSupport.on('admins connect', function(admins){
      console.log('admins connect',admins);
-    supportUser.supportIsOnline = Object.keys(admins).length > 0;
+     supportUser.supportIsOnline = Object.keys(admins).length > 0;
   });
   
-  Socket.on('error', function(error) {
+  SocketSupport.on('error', function(error) {
     if (error.type === 'UnauthorizedError' || error.code === 'invalid_token') {
       return $state.go('home');
     }
+  });
+
+  $rootScope.$on('logout', function(event, user) { 
+    SocketSupport.emit('logout',user);
   });
   
 }

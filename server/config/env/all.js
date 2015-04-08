@@ -24,17 +24,14 @@ module.exports = {
   hostname: process.env.HOST || process.env.HOSTNAME || 'localhost',
   db: process.env.MONGOHQ_URL,
   templateEngine: 'ejs',
-
-
   // The secret should be set to a non-guessable string that
   // is used to compute a session hash
   apiSecret: 'version01#www.viewtwoo.com#2015',
   sessionSecret: 'version01#www.viewtwoo.com#2015',
-  // Time Expiration token
-  expiresInMinutes: 60*5,
+  // Time Expiration token 
+  tokenExpiresInMinutes: 60,
   // The name of the MongoDB collection to store sessions in
   sessionCollection: 'sessions',
-
   // The session cookie settings
   sessionCookie: {
     path: '/',
@@ -44,7 +41,7 @@ module.exports = {
     // set a cookie. 'true' is recommended yet it requires the above
     // mentioned pre-requisite.
     secure: false,
-    // Only set the maxAge to null if the cookie shouldn't be expired
+     // Only set the maxAge to null if the cookie shouldn't be expired
     // at all. The cookie will expunge when the browser is closed.
     maxAge: null
   },

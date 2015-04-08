@@ -1,5 +1,10 @@
 'use strict';
 
+/**
+ * Module dependencies.
+ */
+var debug = require('debug')('app');
+
 var admins = {},
 	users = {},
 	roomAdmins = 'admin';
@@ -17,7 +22,7 @@ function onSocket(io){
 				socket.join(roomAdmins);
 				socket.broadcast.emit('admins connect',admins);
 				socket.emit('users connect', users);
-				console.log('admin',users);
+				console.log('admin',admins);
 			}
 			else{
 				users[user.id] = user;
@@ -38,6 +43,22 @@ function onSocket(io){
 			io.in(roomAdmins).emit('support user update',support);
 		}
 		socket.on('support user update',supportUserUpdate);
+
+		function onLogout(user){
+			if(isAdmin()){
+				delete admins[user.id];
+				socket.leave(roomAdmins);
+				socket.broadcast.emit('admins connect',admins);
+				console.log('admin logout',admins);
+			}
+			else{
+				delete users[user.id];
+				socket.leave(user.id);
+				socket.broadcast.emit('users connect',users);
+				console.log('user logout',users);
+			}
+		}
+		socket.on('logout',onLogout);
   		
 	};
 }
